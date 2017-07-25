@@ -1,4 +1,5 @@
 import onReady 	from './lifeCycle/onReady';
+import onScroll 	from './lifeCycle/onScroll';
 import onUpdate from './lifeCycle/onUpdate';
 
 module.exports = class Component {
@@ -8,6 +9,7 @@ module.exports = class Component {
 
 		this._onReady  = this._onReady.bind( this );
 		this._onUpdate = this._onUpdate.bind( this );
+		this._onScroll = this._onScroll.bind( this );
 
 		this.isInit 		= false;
 		this.isReady 		= false;
@@ -17,6 +19,7 @@ module.exports = class Component {
 		this._onInit();
 
 		onReady.register( this._onReady );
+		onScroll.register( this._onScroll );
 
 		if( this.onUpdate != void 0 ) {
 			onUpdate.register( this._onUpdate );
@@ -38,17 +41,17 @@ module.exports = class Component {
 	}
 
 	_onUpdate() {
-		if( this.isActive ) {
-			this.onUpdate();
-		}
-
 		if( this.isLastActive !== this.isActive ) {
 			if( this.isActive ) {
-				this._onActive();
+				this._onActivate();
 			}
 			else {
 				this._onDesactivate();
 			}
+		}
+
+		if( this.isActive ) {
+			this.onUpdate();
 		}
 
 		this.isLastActive = this.isActive;
@@ -63,6 +66,12 @@ module.exports = class Component {
 	_onDesactivate() {
 		if( this.onDesactivate != void 0 ) {
 			this.onDesactivate();
+		}
+	}
+
+	_onScroll() {
+		if( this.onScroll != void 0 ) {
+			this.onScroll();
 		}
 	}
 

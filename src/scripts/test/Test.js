@@ -3,7 +3,7 @@ import Component from '../colorz/Component';
 module.exports = class Test extends Component {
 
 	constructor( el ) {
-		super( el );
+		super();
 	}
 
 	onInit() {
@@ -16,16 +16,18 @@ module.exports = class Test extends Component {
 
 	onUpdate() {
 		console.log( 'update' );
-
-		this.isActive = false;
 	}
 
-	onActive() {
-		console.log( 'update' );
+	onActivate() {
+		console.log( 'onActivate' );
 	}
 
 	onDesactivate() {
 		console.log( 'onDesactivate' );
+	}
+
+	onScroll() {
+		console.log( 'onScroll' );
 	}
 
 }
