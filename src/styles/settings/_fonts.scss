@@ -1,0 +1,39 @@
+@font-face {
+    font-family: "roboto-regular";
+    src: url($font-path+"Roboto-Regular.eot"),    
+         url($font-path+"Roboto-Regular.woff") format("woff"),
+         url($font-path+"Roboto-Regular.ttf") format("truetype"),
+         url($font-path+"Roboto-Regular.svg#heroic_thin") format("svg");
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "roboto-bold";
+    src: url($font-path+"Roboto-Bold.eot"),    
+         url($font-path+"Roboto-Bold.woff") format("woff"),
+         url($font-path+"Roboto-Bold.ttf") format("truetype"),
+         url($font-path+"Roboto-Bold.svg#heroic_thin") format("svg");
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "roboto-light";
+    src: url($font-path+"Roboto-light.eot"),    
+         url($font-path+"Roboto-light.woff") format("woff"),
+         url($font-path+"Roboto-light.ttf") format("truetype"),
+         url($font-path+"Roboto-light.svg#heroic_thin") format("svg");
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "roboto-medium";
+    src: url($font-path+"Roboto-Medium.eot"),    
+         url($font-path+"Roboto-Medium.woff") format("woff"),
+         url($font-path+"Roboto-Medium.ttf") format("truetype"),
+         url($font-path+"Roboto-Medium.svg#heroic_thin") format("svg");
+    font-weight: 400;
+    font-style: normal;
+}

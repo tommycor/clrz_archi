@@ -1,0 +1,23 @@
+@charset 'utf-8';
+
+@import 'vendor/bootstrap';
+
+@import 'settings/general',
+		'settings/colors',
+		'settings/reset',
+		'settings/extends',
+		'settings/base',
+		'settings/fonts';
+
+@import 'theme/titles',
+		'theme/btn',
+		'theme/texts';
+
+@import 'components/nav',
+		'components/big-picture',
+		'components/footer',
+		'components/grid',
+		'components/hilighted-article',
+		'components/header';
+
+@import 'shame.scss';

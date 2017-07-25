@@ -1,0 +1,57 @@
+.t-btn {
+	@extend %reset-button;
+	@extend %reset-link;
+}
+
+.t-btn__rounded {
+	@extend .t-btn;
+
+	display: inline-block;
+	transform: translateZ(0);
+	border-radius: 50px;
+	border: none;
+	overflow: hidden;
+	position: relative;
+}
+
+.t-btn__rounded--white {
+	@extend .t-btn__rounded;
+	@extend .t-bold;
+
+	color: $black;
+	font-size: $font-size-md;
+	position: relative;
+
+}
+
+.t-btn__rounded--white__base {
+	transform: translateZ(0);
+	position: relative;
+	display: block;
+	padding: 10px 50px;
+	opacity: 1;
+	transition: opacity .2s .1s ease-out;
+	background-color: $white;
+
+	.t-btn__rounded--white:hover &{
+		opacity: 0;
+	}
+
+}
+
+.t-btn__rounded--white__hover {
+	@extend .e-wrapper-panel;
+
+	background-color: $black;
+	color: $white;
+	transform: translateZ(0);
+	opacity: 0;
+	display: block;
+	padding: 10px;
+	font-size: $font-size-md;
+	transition: opacity .3s ease-out;
+
+	.t-btn__rounded--white:hover &{
+		opacity: 1;
+	}
+}

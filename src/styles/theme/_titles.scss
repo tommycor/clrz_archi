@@ -1,0 +1,52 @@
+h1 {
+	display: none;
+}
+
+h2 {
+	display: block;
+	font-size: $font-size-h2;
+	font-family: 'roboto-regular';
+	color: $gray;
+	margin-top: $margin-sm;
+	line-height: $font-size-h2;
+}
+
+h3 {
+	display: block;
+	font-size: 30px;
+	font-family: 'roboto-bold';
+	color: $white;
+	margin-bottom: $margin-xs;
+	margin-top: 0;
+
+	@media (min-width: $screen-sm-min) {
+		margin-bottom: $margin-md;
+		margin-top:  $margin-md;
+	}
+	@media (min-width: $screen-md-min) {
+		font-size: 45px;
+		margin-bottom: $margin-xl;
+		margin-top: $margin-xl;
+	}
+	@media (min-width: $screen-lg-min) {
+		font-size: $font-size-h3;
+	}
+}
+
+h4 {
+	@extend .t-bold;
+
+	display: block;
+	font-size: 24px;
+	color: $black;
+	margin: 0;
+}
+
+h5 {
+	@extend .t-bold;
+
+	text-transform: uppercase;
+	font-size: $font-size-sm;
+	color: $black;
+	margin: 0;
+}

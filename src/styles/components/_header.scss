@@ -1,0 +1,39 @@
+$marg-menu: 7px;
+
+.c-header {
+	@extend .e-valign-wrapper;
+
+	height: 150px;
+}
+
+.c-header__titles {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.c-header-mobile__titles {
+	display: inline-block;
+	vertical-align: middle;
+	text-align: center;
+}
+
+.c-header-mobile__menu {
+	display: inline-block;
+	position: relative;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.c-header-mobile__menu__item {
+	height: 3px;
+	background-color: black;
+	width: 35px;
+	position: relative;
+
+	&-1 {
+		margin-bottom: $marg-menu;
+	}
+	&-2 {
+		margin-bottom: $marg-menu;
+	}
+}
