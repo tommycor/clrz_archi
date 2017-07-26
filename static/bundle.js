@@ -10266,6 +10266,10 @@ var _lifeCycleOnReady = require('./lifeCycle/onReady');
 
 var _lifeCycleOnReady2 = _interopRequireDefault(_lifeCycleOnReady);
 
+var _lifeCycleOnResize = require('./lifeCycle/onResize');
+
+var _lifeCycleOnResize2 = _interopRequireDefault(_lifeCycleOnResize);
+
 var _lifeCycleOnScroll = require('./lifeCycle/onScroll');
 
 var _lifeCycleOnScroll2 = _interopRequireDefault(_lifeCycleOnScroll);
@@ -10281,6 +10285,7 @@ module.exports = (function () {
 		this.el = el;
 
 		this._onReady = this._onReady.bind(this);
+		this._onResize = this._onResize.bind(this);
 		this._onUpdate = this._onUpdate.bind(this);
 		this._onScroll = this._onScroll.bind(this);
 
@@ -10292,6 +10297,7 @@ module.exports = (function () {
 		this._onInit();
 
 		_lifeCycleOnReady2['default'].register(this._onReady);
+		_lifeCycleOnResize2['default'].register(this._onResize);
 		_lifeCycleOnScroll2['default'].register(this._onScroll);
 
 		if (this.onUpdate != void 0) {
@@ -10313,6 +10319,13 @@ module.exports = (function () {
 
 			if (this.onReady != void 0) {
 				this.onReady();
+			}
+		}
+	}, {
+		key: '_onResize',
+		value: function _onResize() {
+			if (this.onResize != void 0) {
+				this.onResize();
 			}
 		}
 	}, {
@@ -10362,7 +10375,7 @@ module.exports = (function () {
 	return Component;
 })();
 
-},{"./lifeCycle/onReady":"D:\\Documents\\git\\clrz_archi\\src\\scripts\\colorz\\lifeCycle\\onReady.js","./lifeCycle/onScroll":"D:\\Documents\\git\\clrz_archi\\src\\scripts\\colorz\\lifeCycle\\onScroll.js","./lifeCycle/onUpdate":"D:\\Documents\\git\\clrz_archi\\src\\scripts\\colorz\\lifeCycle\\onUpdate.js"}],"D:\\Documents\\git\\clrz_archi\\src\\scripts\\colorz\\lifeCycle\\BaseLifeCycle.js":[function(require,module,exports){
+},{"./lifeCycle/onReady":"D:\\Documents\\git\\clrz_archi\\src\\scripts\\colorz\\lifeCycle\\onReady.js","./lifeCycle/onResize":"D:\\Documents\\git\\clrz_archi\\src\\scripts\\colorz\\lifeCycle\\onResize.js","./lifeCycle/onScroll":"D:\\Documents\\git\\clrz_archi\\src\\scripts\\colorz\\lifeCycle\\onScroll.js","./lifeCycle/onUpdate":"D:\\Documents\\git\\clrz_archi\\src\\scripts\\colorz\\lifeCycle\\onUpdate.js"}],"D:\\Documents\\git\\clrz_archi\\src\\scripts\\colorz\\lifeCycle\\BaseLifeCycle.js":[function(require,module,exports){
 'use strict';
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
@@ -10461,6 +10474,37 @@ var OnReady = (function (_BaseLifeCycle) {
 })(_BaseLifeCycle3['default']);
 
 module.exports = new OnReady();
+
+},{"./BaseLifeCycle":"D:\\Documents\\git\\clrz_archi\\src\\scripts\\colorz\\lifeCycle\\BaseLifeCycle.js"}],"D:\\Documents\\git\\clrz_archi\\src\\scripts\\colorz\\lifeCycle\\onResize.js":[function(require,module,exports){
+'use strict';
+
+var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var _BaseLifeCycle2 = require('./BaseLifeCycle');
+
+var _BaseLifeCycle3 = _interopRequireDefault(_BaseLifeCycle2);
+
+var OnResize = (function (_BaseLifeCycle) {
+	_inherits(OnResize, _BaseLifeCycle);
+
+	function OnResize() {
+		_classCallCheck(this, OnResize);
+
+		_get(Object.getPrototypeOf(OnResize.prototype), 'constructor', this).call(this, true);
+
+		window.addEventListener('resize', this.onEvent);
+	}
+
+	return OnResize;
+})(_BaseLifeCycle3['default']);
+
+module.exports = new OnResize();
 
 },{"./BaseLifeCycle":"D:\\Documents\\git\\clrz_archi\\src\\scripts\\colorz\\lifeCycle\\BaseLifeCycle.js"}],"D:\\Documents\\git\\clrz_archi\\src\\scripts\\colorz\\lifeCycle\\onScroll.js":[function(require,module,exports){
 'use strict';
@@ -10610,6 +10654,11 @@ module.exports = (function (_Component) {
 		key: 'onDesactivate',
 		value: function onDesactivate() {
 			console.log('onDesactivate');
+		}
+	}, {
+		key: 'onResize',
+		value: function onResize() {
+			console.log('onResize');
 		}
 	}, {
 		key: 'onScroll',

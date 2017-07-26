@@ -26,6 +26,10 @@ module.exports = class Test extends Component {
 		console.log( 'onDesactivate' );
 	}
 
+	onResize() {
+		console.log( 'onResize' );
+	}
+
 	onScroll() {
 		console.log( 'onScroll' );
 	}

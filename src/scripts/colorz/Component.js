@@ -1,5 +1,6 @@
 import onReady 	from './lifeCycle/onReady';
-import onScroll 	from './lifeCycle/onScroll';
+import onResize from './lifeCycle/onResize';
+import onScroll from './lifeCycle/onScroll';
 import onUpdate from './lifeCycle/onUpdate';
 
 module.exports = class Component {
@@ -8,6 +9,7 @@ module.exports = class Component {
 		this.el = el;
 
 		this._onReady  = this._onReady.bind( this );
+		this._onResize = this._onResize.bind( this );
 		this._onUpdate = this._onUpdate.bind( this );
 		this._onScroll = this._onScroll.bind( this );
 
@@ -19,6 +21,7 @@ module.exports = class Component {
 		this._onInit();
 
 		onReady.register( this._onReady );
+		onResize.register( this._onResize );
 		onScroll.register( this._onScroll );
 
 		if( this.onUpdate != void 0 ) {
@@ -37,6 +40,12 @@ module.exports = class Component {
 
 		if( this.onReady != void 0 ) {
 			this.onReady();
+		}
+	}
+
+	_onResize() {
+		if( this.onResize != void 0 ) {
+			this.onResize();
 		}
 	}
 
