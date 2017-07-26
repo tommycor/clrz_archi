@@ -14,8 +14,8 @@ module.exports = class Test extends Component {
 		console.log( 'ready' );
 	}
 
-	onUpdate() {
-		console.log( 'update' );
+	onUpdate( delta ) {
+		// console.log( 'update', delta );
 	}
 
 	onActivate() {

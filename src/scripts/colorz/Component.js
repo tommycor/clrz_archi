@@ -40,7 +40,11 @@ module.exports = class Component {
 		}
 	}
 
-	_onUpdate() {
+	_onUpdate( delta ) {
+		if( this.isActive ) {
+			this.onUpdate( delta );
+		}
+
 		if( this.isLastActive !== this.isActive ) {
 			if( this.isActive ) {
 				this._onActivate();

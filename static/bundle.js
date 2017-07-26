@@ -1,4 +1,4 @@
-(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({"/Users/tommy.cornilleau/Desktop/TEMP/clrz_archi/node_modules/jquery/dist/jquery.js":[function(require,module,exports){
+(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({"D:\\Documents\\git\\clrz_archi\\node_modules\\jquery\\dist\\jquery.js":[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v3.2.1
  * https://jquery.com/
@@ -10253,7 +10253,7 @@ if ( !noGlobal ) {
 return jQuery;
 } );
 
-},{}],"/Users/tommy.cornilleau/Desktop/TEMP/clrz_archi/src/scripts/colorz/Component.js":[function(require,module,exports){
+},{}],"D:\\Documents\\git\\clrz_archi\\src\\scripts\\colorz\\Component.js":[function(require,module,exports){
 'use strict';
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
@@ -10317,7 +10317,11 @@ module.exports = (function () {
 		}
 	}, {
 		key: '_onUpdate',
-		value: function _onUpdate() {
+		value: function _onUpdate(delta) {
+			if (this.isActive) {
+				this.onUpdate(delta);
+			}
+
 			if (this.isLastActive !== this.isActive) {
 				if (this.isActive) {
 					this._onActivate();
@@ -10358,7 +10362,7 @@ module.exports = (function () {
 	return Component;
 })();
 
-},{"./lifeCycle/onReady":"/Users/tommy.cornilleau/Desktop/TEMP/clrz_archi/src/scripts/colorz/lifeCycle/onReady.js","./lifeCycle/onScroll":"/Users/tommy.cornilleau/Desktop/TEMP/clrz_archi/src/scripts/colorz/lifeCycle/onScroll.js","./lifeCycle/onUpdate":"/Users/tommy.cornilleau/Desktop/TEMP/clrz_archi/src/scripts/colorz/lifeCycle/onUpdate.js"}],"/Users/tommy.cornilleau/Desktop/TEMP/clrz_archi/src/scripts/colorz/lifeCycle/BaseLifeCycle.js":[function(require,module,exports){
+},{"./lifeCycle/onReady":"D:\\Documents\\git\\clrz_archi\\src\\scripts\\colorz\\lifeCycle\\onReady.js","./lifeCycle/onScroll":"D:\\Documents\\git\\clrz_archi\\src\\scripts\\colorz\\lifeCycle\\onScroll.js","./lifeCycle/onUpdate":"D:\\Documents\\git\\clrz_archi\\src\\scripts\\colorz\\lifeCycle\\onUpdate.js"}],"D:\\Documents\\git\\clrz_archi\\src\\scripts\\colorz\\lifeCycle\\BaseLifeCycle.js":[function(require,module,exports){
 'use strict';
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
@@ -10427,7 +10431,7 @@ module.exports = (function () {
 	return BaseLifeCycle;
 })();
 
-},{}],"/Users/tommy.cornilleau/Desktop/TEMP/clrz_archi/src/scripts/colorz/lifeCycle/onReady.js":[function(require,module,exports){
+},{}],"D:\\Documents\\git\\clrz_archi\\src\\scripts\\colorz\\lifeCycle\\onReady.js":[function(require,module,exports){
 'use strict';
 
 var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
@@ -10458,7 +10462,7 @@ var OnReady = (function (_BaseLifeCycle) {
 
 module.exports = new OnReady();
 
-},{"./BaseLifeCycle":"/Users/tommy.cornilleau/Desktop/TEMP/clrz_archi/src/scripts/colorz/lifeCycle/BaseLifeCycle.js"}],"/Users/tommy.cornilleau/Desktop/TEMP/clrz_archi/src/scripts/colorz/lifeCycle/onScroll.js":[function(require,module,exports){
+},{"./BaseLifeCycle":"D:\\Documents\\git\\clrz_archi\\src\\scripts\\colorz\\lifeCycle\\BaseLifeCycle.js"}],"D:\\Documents\\git\\clrz_archi\\src\\scripts\\colorz\\lifeCycle\\onScroll.js":[function(require,module,exports){
 'use strict';
 
 var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
@@ -10489,7 +10493,7 @@ var OnScroll = (function (_BaseLifeCycle) {
 
 module.exports = new OnScroll();
 
-},{"./BaseLifeCycle":"/Users/tommy.cornilleau/Desktop/TEMP/clrz_archi/src/scripts/colorz/lifeCycle/BaseLifeCycle.js"}],"/Users/tommy.cornilleau/Desktop/TEMP/clrz_archi/src/scripts/colorz/lifeCycle/onUpdate.js":[function(require,module,exports){
+},{"./BaseLifeCycle":"D:\\Documents\\git\\clrz_archi\\src\\scripts\\colorz\\lifeCycle\\BaseLifeCycle.js"}],"D:\\Documents\\git\\clrz_archi\\src\\scripts\\colorz\\lifeCycle\\onUpdate.js":[function(require,module,exports){
 'use strict';
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
@@ -10507,33 +10511,41 @@ var _BaseLifeCycle2 = require('./BaseLifeCycle');
 var _BaseLifeCycle3 = _interopRequireDefault(_BaseLifeCycle2);
 
 var OnUpdate = (function (_BaseLifeCycle) {
-	_inherits(OnUpdate, _BaseLifeCycle);
+		_inherits(OnUpdate, _BaseLifeCycle);
 
-	function OnUpdate() {
-		_classCallCheck(this, OnUpdate);
+		function OnUpdate() {
+				_classCallCheck(this, OnUpdate);
 
-		_get(Object.getPrototypeOf(OnUpdate.prototype), 'constructor', this).call(this, false);
+				_get(Object.getPrototypeOf(OnUpdate.prototype), 'constructor', this).call(this, false);
 
-		this.onEvent();
-	}
+				this.date = new Date();
+				this.lastDate = this.date.getTime();
 
-	_createClass(OnUpdate, [{
-		key: 'onEvent',
-		value: function onEvent() {
-			this.callCallbacks(event);
-
-			requestAnimationFrame(this.onEvent);
-
-			return;
+				this.onEvent();
 		}
-	}]);
 
-	return OnUpdate;
+		_createClass(OnUpdate, [{
+				key: 'onEvent',
+				value: function onEvent() {
+						this.date = new Date();
+						var currentDate = this.date.getTime();
+
+						this.callCallbacks(currentDate - this.lastDate);
+
+						this.lastDate = currentDate;
+
+						requestAnimationFrame(this.onEvent);
+
+						return;
+				}
+		}]);
+
+		return OnUpdate;
 })(_BaseLifeCycle3['default']);
 
 module.exports = new OnUpdate();
 
-},{"./BaseLifeCycle":"/Users/tommy.cornilleau/Desktop/TEMP/clrz_archi/src/scripts/colorz/lifeCycle/BaseLifeCycle.js"}],"/Users/tommy.cornilleau/Desktop/TEMP/clrz_archi/src/scripts/initialize.js":[function(require,module,exports){
+},{"./BaseLifeCycle":"D:\\Documents\\git\\clrz_archi\\src\\scripts\\colorz\\lifeCycle\\BaseLifeCycle.js"}],"D:\\Documents\\git\\clrz_archi\\src\\scripts\\initialize.js":[function(require,module,exports){
 "use strict";
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
@@ -10548,7 +10560,7 @@ var _testTest2 = _interopRequireDefault(_testTest);
 
 var test = new _testTest2["default"]();
 
-},{"./test/Test":"/Users/tommy.cornilleau/Desktop/TEMP/clrz_archi/src/scripts/test/Test.js","jquery":"/Users/tommy.cornilleau/Desktop/TEMP/clrz_archi/node_modules/jquery/dist/jquery.js"}],"/Users/tommy.cornilleau/Desktop/TEMP/clrz_archi/src/scripts/test/Test.js":[function(require,module,exports){
+},{"./test/Test":"D:\\Documents\\git\\clrz_archi\\src\\scripts\\test\\Test.js","jquery":"D:\\Documents\\git\\clrz_archi\\node_modules\\jquery\\dist\\jquery.js"}],"D:\\Documents\\git\\clrz_archi\\src\\scripts\\test\\Test.js":[function(require,module,exports){
 'use strict';
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
@@ -10586,8 +10598,8 @@ module.exports = (function (_Component) {
 		}
 	}, {
 		key: 'onUpdate',
-		value: function onUpdate() {
-			console.log('update');
+		value: function onUpdate(delta) {
+			// console.log( 'update', delta );
 		}
 	}, {
 		key: 'onActivate',
@@ -10609,6 +10621,6 @@ module.exports = (function (_Component) {
 	return Test;
 })(_colorzComponent2['default']);
 
-},{"../colorz/Component":"/Users/tommy.cornilleau/Desktop/TEMP/clrz_archi/src/scripts/colorz/Component.js"}]},{},["/Users/tommy.cornilleau/Desktop/TEMP/clrz_archi/src/scripts/initialize.js"])
+},{"../colorz/Component":"D:\\Documents\\git\\clrz_archi\\src\\scripts\\colorz\\Component.js"}]},{},["D:\\Documents\\git\\clrz_archi\\src\\scripts\\initialize.js"])
 
 //# sourceMappingURL=bundle.js.map
