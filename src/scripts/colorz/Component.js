@@ -5,9 +5,7 @@ import onUpdate from './lifeCycle/onUpdate';
 
 module.exports = class Component {
 
-	constructor( el ) {
-		this.el = el;
-
+	constructor( args ) {
 		this._onReady  = this._onReady.bind( this );
 		this._onResize = this._onResize.bind( this );
 		this._onUpdate = this._onUpdate.bind( this );
@@ -18,7 +16,7 @@ module.exports = class Component {
 		this.isActive		= true;
 		this.isLastActive	= true;
 
-		this._onInit();
+		this._onInit( args );
 
 		onReady.register( this._onReady );
 		onResize.register( this._onResize );
@@ -29,9 +27,9 @@ module.exports = class Component {
 		}
 	}
 
-	_onInit() {
+	_onInit( args ) {
 		if( this.onInit != void 0 ) {
-			this.onInit();
+			this.onInit( args );
 		}
 	}
 

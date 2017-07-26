@@ -10279,10 +10279,8 @@ var _lifeCycleOnUpdate = require('./lifeCycle/onUpdate');
 var _lifeCycleOnUpdate2 = _interopRequireDefault(_lifeCycleOnUpdate);
 
 module.exports = (function () {
-	function Component(el) {
+	function Component(args) {
 		_classCallCheck(this, Component);
-
-		this.el = el;
 
 		this._onReady = this._onReady.bind(this);
 		this._onResize = this._onResize.bind(this);
@@ -10294,7 +10292,7 @@ module.exports = (function () {
 		this.isActive = true;
 		this.isLastActive = true;
 
-		this._onInit();
+		this._onInit(args);
 
 		_lifeCycleOnReady2['default'].register(this._onReady);
 		_lifeCycleOnResize2['default'].register(this._onResize);
@@ -10307,9 +10305,9 @@ module.exports = (function () {
 
 	_createClass(Component, [{
 		key: '_onInit',
-		value: function _onInit() {
+		value: function _onInit(args) {
 			if (this.onInit != void 0) {
-				this.onInit();
+				this.onInit(args);
 			}
 		}
 	}, {
@@ -10590,9 +10588,9 @@ var OnUpdate = (function (_BaseLifeCycle) {
 module.exports = new OnUpdate();
 
 },{"./BaseLifeCycle":"D:\\Documents\\git\\clrz_archi\\src\\scripts\\colorz\\lifeCycle\\BaseLifeCycle.js"}],"D:\\Documents\\git\\clrz_archi\\src\\scripts\\initialize.js":[function(require,module,exports){
-"use strict";
+'use strict';
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
 var _jquery = require("jquery");
 
@@ -10602,7 +10600,11 @@ var _testTest = require('./test/Test');
 
 var _testTest2 = _interopRequireDefault(_testTest);
 
-var test = new _testTest2["default"]();
+var item = document.querySelectorAll('.js-test');
+
+for (var i = 0; i < item.length; i++) {
+	var test = new _testTest2['default'](item[i]);
+}
 
 },{"./test/Test":"D:\\Documents\\git\\clrz_archi\\src\\scripts\\test\\Test.js","jquery":"D:\\Documents\\git\\clrz_archi\\node_modules\\jquery\\dist\\jquery.js"}],"D:\\Documents\\git\\clrz_archi\\src\\scripts\\test\\Test.js":[function(require,module,exports){
 'use strict';
@@ -10624,16 +10626,19 @@ var _colorzComponent2 = _interopRequireDefault(_colorzComponent);
 module.exports = (function (_Component) {
 	_inherits(Test, _Component);
 
-	function Test(el) {
+	function Test() {
 		_classCallCheck(this, Test);
 
-		_get(Object.getPrototypeOf(Test.prototype), 'constructor', this).call(this);
+		_get(Object.getPrototypeOf(Test.prototype), 'constructor', this).apply(this, arguments);
 	}
 
 	_createClass(Test, [{
 		key: 'onInit',
-		value: function onInit() {
+		value: function onInit(el) {
 			console.log('init');
+
+			this.el = el;
+			this.isActive = true;
 		}
 	}, {
 		key: 'onReady',

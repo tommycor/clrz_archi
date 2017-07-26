@@ -2,12 +2,11 @@ import Component from '../colorz/Component';
 
 module.exports = class Test extends Component {
 
-	constructor( el ) {
-		super();
-	}
-
-	onInit() {
+	onInit( el ) {
 		console.log( 'init' );
+
+		this.el = el;
+		this.isActive = true;
 	}
 
 	onReady() {
@@ -33,5 +32,4 @@ module.exports = class Test extends Component {
 	onScroll() {
 		console.log( 'onScroll' );
 	}
-
 }
