@@ -1,39 +1,28 @@
+$font-path: 'assets/fonts/';
+
 @font-face {
-    font-family: "roboto-regular";
-    src: url($font-path+"Roboto-Regular.eot"),    
-         url($font-path+"Roboto-Regular.woff") format("woff"),
-         url($font-path+"Roboto-Regular.ttf") format("truetype"),
-         url($font-path+"Roboto-Regular.svg#heroic_thin") format("svg");
-    font-weight: 400;
-    font-style: normal;
+	font-family: 'helvetica';
+	src:	url($font-path+'helvetica-regular.woff') format('woff'),
+			url($font-path+'helvetica-regular.woff2') format('woff2'),
+			url($font-path+'helvetica-regular.ttf') format('truetype');
+	font-weight: 400;
+	font-style: normal;
 }
 
 @font-face {
-    font-family: "roboto-bold";
-    src: url($font-path+"Roboto-Bold.eot"),    
-         url($font-path+"Roboto-Bold.woff") format("woff"),
-         url($font-path+"Roboto-Bold.ttf") format("truetype"),
-         url($font-path+"Roboto-Bold.svg#heroic_thin") format("svg");
-    font-weight: 400;
-    font-style: normal;
+	font-family: 'helvetica';
+	src:	url($font-path+'helvetica-bold.woff') format('woff'),
+			url($font-path+'helvetica-bold.woff2') format('woff2'),
+			url($font-path+'helvetica-bold.ttf') format('truetype');
+	font-weight: 800;
+	font-style: normal;
 }
 
 @font-face {
-    font-family: "roboto-light";
-    src: url($font-path+"Roboto-light.eot"),    
-         url($font-path+"Roboto-light.woff") format("woff"),
-         url($font-path+"Roboto-light.ttf") format("truetype"),
-         url($font-path+"Roboto-light.svg#heroic_thin") format("svg");
-    font-weight: 400;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: "roboto-medium";
-    src: url($font-path+"Roboto-Medium.eot"),    
-         url($font-path+"Roboto-Medium.woff") format("woff"),
-         url($font-path+"Roboto-Medium.ttf") format("truetype"),
-         url($font-path+"Roboto-Medium.svg#heroic_thin") format("svg");
-    font-weight: 400;
-    font-style: normal;
+	font-family: 'helvetica';
+	src:	url($font-path+'helvetica-light.eot') format('eot');
+	src:	url($font-path+'helvetica-light.woff') format('woff'),
+			url($font-path+'helvetica-light.ttf') format('truetype');
+	font-weight: 200;
+	font-style: normal;
 }

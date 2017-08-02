@@ -1,15 +1,26 @@
-.t-bold {
-	font-family: 'roboto-bold';
+.t-text {
+	font-size: 20px;
+	line-height: 30px;
+
+	&--big {
+		font-size: 30px;
+		line-height: 30px;
+	}
+
+	&--small {
+		font-size: 10px;
+		line-height: 26px;
+	}
 }
 
 .t-regular {
-	font-family: 'roboto-regular';
+	font-weight: $font-regular;
+}
+
+.t-bold {
+	font-weight: $font-bold;
 }
 
 .t-light {
-	font-family: 'roboto-light';
-}
-
-.t-medium {
-	font-family: 'roboto-medium';
+	font-weight: $font-light;
 }

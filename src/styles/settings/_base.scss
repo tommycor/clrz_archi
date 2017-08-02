@@ -1,11 +1,26 @@
 body {
-	background-color : $gray-light;
+    font-family: $main-font;
+    font-weight: $font-regular;
+    font-size: 20px;
+    line-height: 30px;
+    color: $black;
+    position: relative;
 }
 
-.container {
-	background-color: $white;
+.wrapper {
+	overflow-x: hidden;
+	overflow-y: scroll;
+	width: 100vw;
 }
 
-.row {
-	margin: 0;
+@include selection {
+	background-color: $black;
+	color: $white;
+}
+
+.t-bg-black {
+    @include selection {
+        background-color: $black;
+        color: $white;
+    }    
 }

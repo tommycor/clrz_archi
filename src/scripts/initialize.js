@@ -1,9 +1,9 @@
-import $ from "jquery";
-import Test from './test/Test'
+import $ 		from "jquery";
+
+import creator 	from './colorz/utils/creator';
+
+import Form 	from './components/Form';
 
 
-var item = document.querySelectorAll('.js-test');
 
-for( let i = 0 ; i < item.length ; i++ ) {
-	let test = new Test( item[i] );
-}
+var forms = creator( '.js-form', Form );

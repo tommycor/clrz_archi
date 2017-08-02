@@ -1,7 +1,115 @@
-$black: #000000;
-$white: #ffffff;
-$gray: #777777;
-$gray-light: #ededed;
-$gray-lighter: #b3b3b3;
-$gray-dark: #1c1c1d;
-$red: #ff0000;
+.t-main-color {
+	color: $main_color;
+}
+.t-black {
+	color: $black;
+}
+.t-white {
+	color: $white;
+}
+.t-grey {
+	color: $grey;
+}
+.t-pink {
+	color: $pink;
+}
+.t-green {
+	color: $green;
+}
+.t-red {
+	color: $red;
+}
+
+.t-bg-main-color {
+	background-color: $main_color;
+}
+.t-bg-black {
+	background-color: $black;
+}
+.t-bg-white {
+	background-color: $white;
+}
+.t-bg-grey {
+	background-color: $grey;
+}
+.t-bg-pink {
+	background-color: $pink;
+}
+.t-bg-green {
+	background-color: $green;
+}
+.t-bg-red {
+	background-color: $red;
+}
+
+.t-fill-main-color {
+	fill: $main_color;
+}
+.t-fill-black {
+	fill: $black;
+}
+.t-fill-white {
+	fill: $white;
+}
+.t-fill-grey {
+	fill: $grey;
+}
+.t-fill-pink {
+	fill: $pink;
+}
+.t-fill-green {
+	fill: $green;
+}
+.t-fill-red {
+	fill: $red;
+}
+.t-fill-transparent {
+	fill: transparent;
+}
+
+.t-stroke-main-color {
+	stroke: $main_color;
+}
+.t-stroke-black {
+	stroke: $black;
+}
+.t-stroke-white {
+	stroke: $white;
+}
+.t-stroke-grey {
+	stroke: $grey;
+}
+.t-stroke-pink {
+	stroke: $pink;
+}
+.t-stroke-green {
+	stroke: $green;
+}
+.t-stroke-red {
+	stroke: $red;
+}
+.t-stroke-transparent {
+	stroke: transparent;
+}
+
+.t-border-main-color {
+	border-color: $main_color;
+}
+.t-border-black {
+	border-color: $black;
+}
+.t-border-white {
+	border-color: $white;
+}
+.t-border-grey {
+	border-color: $grey;
+}
+.t-border-pink {
+	border-color: $pink;
+}
+.t-border-green {
+	border-color: $green;
+}
+.t-border-red {
+	border-color: $red;
+}

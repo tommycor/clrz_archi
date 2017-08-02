@@ -2,26 +2,29 @@
 
 @import 'vendor/bootstrap';
 
-@import 'settings/general',
-		'settings/colors',
+@import 'settings/easings',
+		'settings/mixins',
 		'settings/reset',
-		'settings/extends',
+		'settings/fonts',
+		'settings/variables',
 		'settings/base',
-		'settings/fonts';
+		'settings/boxes',
+		'settings/colors';
 
-@import 'theme/titles',
-		'theme/btn',
-		'theme/texts';
+@import 'theme/utilities',
+		'theme/texts',
+		'theme/icons',
+		'theme/links',
+		'theme/paragraph',
+		'theme/inputs',
+		'theme/titles';
 
-@import 'components/nav',
-		'components/big-picture',
-		'components/footer',
-		'components/grid',
-		'components/hilighted-article',
-		'components/header';
+@import 'components/header',
+		'components/first-content',
+		'components/slider-strate',
+		'components/title-resize',
+		'components/clients',
+		'components/contact',
+		'components/main-title';
 
 @import 'shame.scss';
-
-body {
-	height: 150vh;
-}

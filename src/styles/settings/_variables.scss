@@ -1,0 +1,35 @@
+@charset "UTF-8";
+
+$bp-mobile: 767px;
+$bp-tablet: 1080px;
+$bp-desktop: 1370px;
+
+$mobile: ($bp-mobile - 1);
+$tablet: ($bp-tablet + 1);
+$desktop: ($bp-desktop + 1);
+$min-desktop: ($tablet - 1);
+
+$container-sm: (738px);
+$container-md: (1020px);
+$container-lg: (1420px);
+
+$main-font: "helvetica", sans-serif;
+
+$font-regular: 400;
+$font-bold: 700;
+$font-light: 200;
+
+// Bootstrap
+// $screen-xs: ;
+$screen-sm: $bp-mobile;
+$screen-md: $bp-tablet;
+$screen-lg: $bp-desktop;
+
+// colors
+$main_color: #000000;
+$black: #000000;
+$white: #ffffff;
+$grey: #7f7f7f;
+$pink: #f3a7c9;
+$green: #00ff00;
+$red: #ff0000;

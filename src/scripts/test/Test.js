@@ -2,9 +2,7 @@ import Component from '../colorz/Component';
 
 module.exports = class Test extends Component {
 
-	onInit( el ) {
-		console.log( 'init' );
-
+	onInit( el, args ) {
 		this.el = el;
 		this.isActive = true;
 	}

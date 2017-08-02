@@ -1,0 +1,49 @@
+.t-link {
+	@extend %reset-link;
+	text-decoration: none;
+	opacity: 1;
+
+	&.t-main-color,
+	&.t-black {
+		color: $main-color;
+		transition: opacity .3s $ease-in-out-quart;
+	}
+	
+	&:hover {
+		opacity: .5;
+		text-decoration: none;
+	}
+
+	&:focus {
+		text-decoration: none;
+	}
+
+	&--underline {
+		position: relative;
+
+		span {
+			position: relative;
+		}
+
+		&:before {
+			content: '';
+			position: absolute;
+			bottom: 0;
+			left: -1px;
+			height: 10px;
+			width: calc( 100% + 2px);
+			background-color: $pink;
+			transition: transform .3s $ease-in-out-quart;
+			transform-origin: 50% 100%;
+			transform: scaleY(.2) translateZ(0);
+		}
+
+		&:hover {
+			opacity: 1;
+
+			&:before {
+				transform: scaleY(1) translateZ(0);
+			}
+		}
+	}
+}
