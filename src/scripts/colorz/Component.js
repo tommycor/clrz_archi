@@ -14,7 +14,7 @@ module.exports = class Component {
 		this.isInit 		= false;
 		this.isReady 		= false;
 		this.isActive		= true;
-		this.isLastActive	= true;
+		this.isLastActive	= null;
 
 		this._onInit( el, args );
 
@@ -28,9 +28,9 @@ module.exports = class Component {
 	}
 
 	_onInit( el, args ) {
-		if( this.onInit != void 0 ) {
-			this.onInit( el, args );
-		}
+		this.isInit = true;
+
+		this.onInit( el, args );
 	}
 
 	_onReady() {
@@ -48,21 +48,17 @@ module.exports = class Component {
 	}
 
 	_onUpdate( delta ) {
-		if( this.isActive ) {
+		if( this.isActive && this.isInit ) {
 			this.onUpdate( delta );
 		}
 
-		if( this.isLastActive !== this.isActive ) {
+		if( this.isLastActive != null && this.isLastActive !== this.isActive ) {
 			if( this.isActive ) {
 				this._onActivate();
 			}
 			else {
 				this._onDesactivate();
 			}
-		}
-
-		if( this.isActive ) {
-			this.onUpdate();
 		}
 
 		this.isLastActive = this.isActive;

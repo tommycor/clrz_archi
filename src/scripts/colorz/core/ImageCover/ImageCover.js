@@ -1,9 +1,11 @@
 import Component from '../../Component';
-import stylizer from '../../utils/stylizer':
+import stylizer  from '../../utils/stylizer';
 
 module.exports = class ImageCover extends Component {
 
 	onInit( el, parent ) {
+		this.apply = this.apply.bind( this );
+
 		this.el     = el;
 		this.parent = parent;
 		this.isDebug  = this.el.getAttribute('data-debug');
@@ -32,7 +34,7 @@ module.exports = class ImageCover extends Component {
 
 		this.ratio  = this.width / this.height;
 
-		this.apply();
+		requestAnimationFrame( this.apply );
 	}
 
 	apply() {

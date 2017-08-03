@@ -13,8 +13,9 @@ class OnUpdate extends BaseLifeCycle {
 	onEvent() {
 		this.date 		= new Date();
 		let currentDate = this.date.getTime();
+		let delta = currentDate - this.lastDate;
 
-		this.callCallbacks( currentDate - this.lastDate );
+		this.callCallbacks( delta > 50 ? 16 : delta );
 
 		this.lastDate = currentDate;
 

@@ -28,6 +28,15 @@ class Device extends Component {
 		this.width 	= window.innerWidth;
 		this.height = window.innerHeight;
 	}
+
+	getScroll() {
+		let doc = document.documentElement;
+
+		return {
+			left: (window.pageXOffset || doc.scrollLeft) - (doc.clientLeft || 0),
+			top:  (window.pageYOffset || doc.scrollTop)  - (doc.clientTop || 0)
+		}
+	}
 }
 
 module.exports = new Device();
