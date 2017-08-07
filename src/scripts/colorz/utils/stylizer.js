@@ -1,4 +1,4 @@
-module.exports = class Stylizer {
+class Stylizer {
 	transform( el, value ) {
 		el.style.webkitTransform = value;
 		el.style.MozTransform = value;
@@ -13,3 +13,5 @@ module.exports = class Stylizer {
 		el.style.oTransformOrigin = value;
 	}
 }
+
+module.exports = new Stylizer();

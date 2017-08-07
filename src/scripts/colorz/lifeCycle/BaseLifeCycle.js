@@ -15,7 +15,7 @@ module.exports = class BaseLifeCycle {
 		if( typeof callback != 'function' ) { console.warn(callback + ' is not a function on ' + this.constructor.name + '.register'); return; }
 
 		if( this.event !== null && this.singleEvent ) {
-			callback( event );
+			callback( this.event );
 		}
 
 		return this.callbacks.push({
