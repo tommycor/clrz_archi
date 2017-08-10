@@ -36,12 +36,7 @@ var config  = {
 
     scriptDir:  'scripts/',
     scriptEntryPoint: 'initialize.js',
-    scriptOutput: 'bundle.js',
-
-    iconsDir: 'icons/',
-    iconsOutput: 'src/scripts/components/my-application/',
-    iconsName: 'icons',
-    iconsExtension: '.html'
+    scriptOutput: 'bundle.js'
 }
 
 
