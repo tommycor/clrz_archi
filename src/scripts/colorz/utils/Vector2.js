@@ -1,3 +1,13 @@
+/**
+ *
+ * Vector 2D class
+ * for documentation, refer to https://threejs.org/docs/#api/math/Vector2
+ *
+ * @param	float 	x 	Vector.x value
+ * @param	float 	y 	Vector.y value
+ *
+ */
+
 module.exports = class Vector2 {
 
 	constructor( x, y ) {

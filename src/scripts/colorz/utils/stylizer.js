@@ -1,3 +1,12 @@
+/**
+ *
+ * Custom javascript to style element for prefiexd style properties
+ *
+ * @param	DOM 	el 		El on wich style must be applied
+ * @param	value 	string 	property value
+ *
+ */
+
 class Stylizer {
 	transform( el, value ) {
 		el.style.webkitTransform = value;

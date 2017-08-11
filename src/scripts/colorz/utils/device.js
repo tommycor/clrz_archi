@@ -1,3 +1,11 @@
+/**
+ *
+ * Get informations about client device
+ *
+ * @return  array 	Initialized objects
+ *
+ */
+
 import Component from '../Component';
 
 class Device extends Component {
