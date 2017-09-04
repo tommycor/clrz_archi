@@ -1,3 +1,15 @@
+/**
+ *
+ * Easing transtion values
+ *
+ * @param	string  	type 		Type of easing. See switch to get easings type
+ * @param	duration  	float 		Duration of the easing
+ * @param	start   	float 		Value to start easing
+ * @param	end 		float 		Value to end easing 
+ * @param	callback 	function 	Callback function for when easing ends
+ *
+ */
+
 import Component from '../Component';
 
 module.exports = class Easing extends Component {

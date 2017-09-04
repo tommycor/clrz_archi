@@ -1,3 +1,14 @@
+/**
+ *
+ * Vector 3D class
+ * for documentation, refer to https://threejs.org/docs/#api/math/Vector3
+ *
+ * @param	float 	x 	Vector.x value
+ * @param	float 	y 	Vector.y value
+ * @param	float 	z 	Vector.z value
+ *
+ */
+
 module.exports = class Vector3 {
 
 	constructor( x, y, z ) {

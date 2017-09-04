@@ -1,3 +1,15 @@
+/**
+ *
+ * Vector 4D class
+ * for documentation, refer to https://threejs.org/docs/#api/math/Vector4
+ *
+ * @param	float 	x 	Vector.x value
+ * @param	float 	y 	Vector.y value
+ * @param	float 	z 	Vector.z value
+ * @param	float 	w 	Vector.w value
+ *
+ */
+
 module.exports = class Vector4 {
 
 	constructor( x, y, z, w ) {

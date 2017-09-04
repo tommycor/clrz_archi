@@ -1,9 +1,18 @@
+/**
+ *
+ * Get informations about client device
+ *
+ * @return  array 	Initialized objects
+ *
+ */
+
 import Component from '../Component';
 
 class Device extends Component {
 	onInit() {
 		this.width 	= 0;
 		this.height = 0;
+		this.scroll = {left: 0, top: 0};
 
 		this.isTouch 	= ('ontouchstart' in window) || (navigator.msMaxTouchPoints > 0);
 		this.isIpad 	= navigator.userAgent.match(/.*(iPad).*/) ? true : false;
@@ -29,10 +38,10 @@ class Device extends Component {
 		this.height = window.innerHeight;
 	}
 
-	getScroll() {
+	onScroll() {
 		let doc = document.documentElement;
 
-		return {
+		this.scroll = {
 			left: (window.pageXOffset || doc.scrollLeft) - (doc.clientLeft || 0),
 			top:  (window.pageYOffset || doc.scrollTop)  - (doc.clientTop || 0)
 		}
