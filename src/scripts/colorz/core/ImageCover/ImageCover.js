@@ -5,7 +5,6 @@ module.exports = class ImageCover extends Component {
 
 	onInit( el, parent ) {
 		this.apply = this.apply.bind( this );
-
 		this.el     = el;
 		this.parent = parent;
 		this.isDebug  = this.el.getAttribute('data-debug');
@@ -40,11 +39,11 @@ module.exports = class ImageCover extends Component {
 	apply() {
 		if( this.ratio >= this.parent.ratio ) {
 			this.el.style.width = 'auto';
-			this.el.height = this.parent.height;
+			this.el.style.height = this.parent.height + 'px';
 		}
 		else if( this.ratio < this.parent.ratio ) {
 			this.el.style.height = 'auto';
-			this.el.width = this.parent.width;
+			this.el.style.width = this.parent.width + 'px';
 		}
 	}
 }

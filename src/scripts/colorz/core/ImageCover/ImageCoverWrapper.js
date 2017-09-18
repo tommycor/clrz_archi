@@ -1,4 +1,5 @@
 import Component 	from '../../Component';
+
 import creator 		from '../../utils/creator';
 import ImageCover 	from './ImageCover';
 
