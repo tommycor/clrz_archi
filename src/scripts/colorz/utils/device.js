@@ -31,6 +31,7 @@ class Device extends Component {
 
 	onReady() {
 		this.onResize();
+		this.onScroll();
 	}
 
 	onResize() {
