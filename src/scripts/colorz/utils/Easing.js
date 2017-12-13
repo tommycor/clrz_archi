@@ -25,7 +25,7 @@ module.exports = class Easing extends Component {
 		if( this.end === false ) { console.warn( 'Easing needs end argument' ); return;}
 
 		this.time 		= 0;
-		this.value		= 0;
+		this.value		= this.start;
 		this.isActive 	= false;
 		this.delta 		= this.end - this.start;
 	}
