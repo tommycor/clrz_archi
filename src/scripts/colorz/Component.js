@@ -1,7 +1,7 @@
-import onReady 	from './lifeCycle/onReady';
-import onResize from './lifeCycle/onResize';
-import onScroll from './lifeCycle/onScroll';
-import onUpdate from './lifeCycle/onUpdate';
+import onReady 	from './lifeCycle/OnReady';
+import onResize from './lifeCycle/OnResize';
+import onScroll from './lifeCycle/OnScroll';
+import onUpdate from './lifeCycle/OnUpdate';
 
 module.exports = class Component {
 
@@ -16,14 +16,19 @@ module.exports = class Component {
 		this.isActive		= true;
 		this.isLastActive	= null;
 
+		this.idReady 		= null;
+		this.idResize 		= null;
+		this.idScroll 		= null;
+		this.idUpdate 		= null;
+
 		this._onInit( el, args );
 
-		onReady.register( this._onReady );
-		onResize.register( this._onResize );
-		onScroll.register( this._onScroll );
+		this.idReady = onReady.register( this._onReady );
+		this.idResize = onResize.register( this._onResize );
+		this.idScroll = onScroll.register( this._onScroll );
 
 		if( this.onUpdate != void 0 ) {
-			onUpdate.register( this._onUpdate );
+			this.idUpdate = onUpdate.register( this._onUpdate );
 		}
 	}
 
@@ -80,6 +85,13 @@ module.exports = class Component {
 		if( this.onScroll != void 0 ) {
 			this.onScroll();
 		}
+	}
+
+	onDestroy() {
+		onReady.unRegister( this.idReady-1 );
+		onResize.unRegister( this.idResize-1 );
+		onScroll.unRegister( this.idScroll-1 );
+		onUpdate.unRegister( this.idUpdate-1 );
 	}
 
 }

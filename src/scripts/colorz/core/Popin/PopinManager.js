@@ -1,20 +1,23 @@
 import Component 	from '../../Component';
 import Popin 		from './Popin';
+import emitter 		from '../../utils/emitter';
 
 module.exports = class PopinManager extends Component {
 	onInit() {
 		this.refresh 		= this.refresh.bind( this );
 		this.getPopinById 	= this.getPopinById.bind( this );
-
-		this.popins = new Array();
-		this.currentPopin = null;
+		this.bindEsc		= this.bindEsc.bind( this );
+		this.closePopin		= this.closePopin.bind( this );
+		this.openPopin		= this.openPopin.bind( this );
+		this.popins 		= [];
+		this.currentPopin 	= null;
 	}
 
 	onReady() {
 		this.refresh();
 	}
 
-	register( popin ) {
+	register( popins ) {
 		for( var i = 0 ; i < popins.length ; i++ ) {
 			var newPopin 	= popins[i];
 			var isDefined 	= false;
@@ -29,27 +32,39 @@ module.exports = class PopinManager extends Component {
 			}
 
 			if( !isDefined ) {
-				this.popins.push( new Popin ( popins[i] ) );
+				this.popins.push( new Popin ( newPopin, { 'open' :this.openPopin, 'close' : this.closePopin} ) );
 			}
 		}
 	}
 
 	openPopin( popin ) {
-		if( this.currentPopin != null ) {
+		if( this.currentPopin !== null ) {
 			this.currentPopin.close();
+			emitter.emit( 'popin:close', this.currentPopin.id );
 		}
 
 		this.currentPopin = popin;
 
+		emitter.emit( 'popin:open', this.currentPopin.id );
 		this.currentPopin.open();
+		document.addEventListener('keyup', this.bindEsc);
 	}
 
-	closePopin( popin ) {
-		if( this.currentPopin != null ) {
+	closePopin() {
+		if( this.currentPopin !== null ) {
 			this.currentPopin.close();
+			emitter.emit( 'popin:close', this.currentPopin.id );
 		}
 
 		this.currentPopin = null;
+		document.removeEventListener('keyup', this.bindEsc);
+	}
+
+
+	bindEsc(event){
+		if(27 === event.keyCode) {
+			this.closePopin();
+		}
 	}
 
 	refresh() {

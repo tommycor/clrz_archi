@@ -18,6 +18,9 @@ module.exports = class BaseLifeCycle {
 			callback( this.event );
 		}
 
+		// if( this.constructor.name == 'OnReady' )
+		// 	console.log(this.callbacks, this.constructor.name)
+
 		return this.callbacks.push({
 			isActive: true,
 			callback: callback
@@ -25,7 +28,7 @@ module.exports = class BaseLifeCycle {
 	}
 
 	unRegister( id ) {
-		if( this.callbacks[id] == void 0 ) { console.warn(callback + ' id does not exists on ' + this.constructor.name + '.unregister'); return; }
+		if( this.callbacks[id] == void 0 ) { console.warn(id + ' id does not exists on ' + this.constructor.name + '.unregister'); return; }
 
 		this.callbacks[id].isActive = false;
 	}

@@ -47,6 +47,21 @@ class Device extends Component {
 			top:  (window.pageYOffset || doc.scrollTop)  - (doc.clientTop || 0)
 		}
 	}
+
+	getPointerPosition( event ) {
+		let clientY = event.clientY;
+		let clientX = event.clientX;
+
+		if( this.isTouch ) {
+			clientY = event.touches[0].clientY;
+			clientX = event.touches[0].clientX;
+		}
+
+		return {
+			x: clientX,
+			y: clientY
+		}
+	}
 }
 
 module.exports = new Device();
