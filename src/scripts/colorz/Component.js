@@ -21,15 +21,15 @@ module.exports = class Component {
 		this.idScroll 		= null;
 		this.idUpdate 		= null;
 
-		this._onInit( el, args );
-
-		this.idReady = onReady.register( this._onReady );
-		this.idResize = onResize.register( this._onResize );
-		this.idScroll = onScroll.register( this._onScroll );
+		this.idReady = onReady.register( this._onReady ) - 1;
+		this.idResize = onResize.register( this._onResize ) - 1;
+		this.idScroll = onScroll.register( this._onScroll ) - 1;
 
 		if( this.onUpdate != void 0 ) {
-			this.idUpdate = onUpdate.register( this._onUpdate );
+			this.idUpdate = onUpdate.register( this._onUpdate ) - 1;
 		}
+
+		this._onInit( el, args );
 	}
 
 	_onInit( el, args ) {
@@ -88,10 +88,18 @@ module.exports = class Component {
 	}
 
 	onDestroy() {
-		onReady.unRegister( this.idReady-1 );
-		onResize.unRegister( this.idResize-1 );
-		onScroll.unRegister( this.idScroll-1 );
-		onUpdate.unRegister( this.idUpdate-1 );
+		if( this.idReady !== null ) {
+			onReady.unRegister( this.idReady-1 );
+		}
+		if( this.idResize !== null ) {
+				onResize.unRegister( this.idResize-1 );
+		}
+		if( this.idScroll !== null ) {
+				onScroll.unRegister( this.idScroll-1 );
+		}
+		if( this.idUpdate !== null ) {
+				onUpdate.unRegister( this.idUpdate-1 );
+		}
 	}
 
 }

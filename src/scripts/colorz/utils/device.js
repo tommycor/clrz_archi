@@ -21,12 +21,14 @@ class Device extends Component {
 		this.isFirefox 	= navigator.userAgent.match(/.*((f|F)irefox).*/) ? true : false;
 
 		this.pointer 		= !!window.navigator.pointerEnabled;
-		this.msPointer 		= !!window.navigator.msPointerEnabled;;
+		this.msPointer 		= !!window.navigator.msPointerEnabled;
 		this.pointerdown 	= this.isTouch ? 'touchstart' : (this.pointer ? 'pointerdown' : (this.msPointer ? 'MSPointerDown' : 'mousedown') );
 		this.pointerup 		= this.isTouch ? 'touchend' : (this.pointer ? 'pointerup' : (this.msPointer ? 'MSPointerUp' : 'mouseup') );
 		this.pointermove 	= this.isTouch ? 'touchmove' : (this.pointer ? 'pointermove' : (this.msPointer ? 'MSPointerMove' : 'mousemove') );
-		this.pointerenter 	= this.isTouch ? 'touchstart' : (this.pointer ? 'pointerenter' : (this.msPointer ? 'mouseover' : 'mouseover') );
+		this.pointerenter 	= this.isTouch ? 'touchstart' : (this.pointer ? 'pointerenter' : (this.msPointer ? 'mouseenter' : 'mouseenter') );
 		this.pointerleave 	= this.isTouch ? 'touchend' : (this.pointer ? 'pointerleave' : (this.msPointer ? 'mouseout' : 'mouseout') );
+		this.pointerover 	= this.isTouch ? 'touchstart' : (this.pointer ? 'pointerover' : (this.msPointer ? 'mouseover' : 'mouseover') );
+		this.pointerout 	= this.isTouch ? 'touchend' : (this.pointer ? 'pointerout' : (this.msPointer ? 'mouseout' : 'mouseout') );
 	}
 
 	onReady() {
