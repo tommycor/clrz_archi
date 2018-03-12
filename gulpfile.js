@@ -20,6 +20,8 @@ var uglify       = require('gulp-uglify');
 var notify       = require("gulp-notify");
 var watchify     = require('watchify');
 var stringify    = require('stringify');
+var CFonts       = require('cfonts');
+var concat       = require('gulp-concat');
 
 var config  = {
 
@@ -31,7 +33,7 @@ var config  = {
     buildDir: './bin/',
 
     stylesDir: 'styles/',
-    stylesEntryPoint: 'styles.scss',
+    stylesEntryPoint: 'theme.scss',
     autoprefixer: ['last 8 versions'],
 
     scriptDir:  'scripts/',
@@ -41,8 +43,32 @@ var config  = {
 
 
 
+var fontConf = {
+    font:           'block',
+    align:          'left',
+    colors:         ['red', 'yellow'],
+    background:     'black',
+    letterSpacing:  1,
+    lineHeight:     1,
+    space:          true,
+    maxLength:      '0'
+};
+
+var fontConfBuild = {
+    font:           'block',
+    align:          'left',
+    colors:         ['blue', 'yellow'],
+    background:     'black',
+    letterSpacing:  1,
+    lineHeight:     1,
+    space:          true,
+    maxLength:      '0'
+};
+
+
+
 var isWatching = true;
-var rootPath   = path.dirname() + '/';
+var rootPath   = __dirname + '/';
 
 
 // clean (remove sourcemaps on build)
@@ -51,6 +77,16 @@ gulp.task('clean', function (cb) {
     del([rootPath + config.destDir + '*.map']).then(function(){
         //cleaned
     });
+});
+
+// concat + minify JS ibs
+// -------------------------
+gulp.task('jsLibs', function() {
+    return gulp.src( config.sourceDir + config.scriptDir + config.libsDir + '*.js')
+    .pipe(concat('libs.js'))
+    .pipe(uglify())
+    .pipe(gulp.dest( config.destDir ))
+    .pipe(notify('jsLibs Complete!'));
 });
 
 
@@ -82,7 +118,6 @@ gulp.task('scripts', function() {
                 //rootPath + configExt.scriptease
             ],
             transform: [
-                [ stringify(['.html', '.glsl']) ],
                 [ babelify ]
             ],
             cache: {},
@@ -124,13 +159,14 @@ gulp.task('scripts', function() {
 
 gulp.task('styles', function() {
     gulp.src([ rootPath + config.sourceDir + config.stylesDir + '**/' + config.stylesEntryPoint ])
+        .pipe(!isWatching ? gutil.noop() : sourcemaps.init({ loadMaps: true }))
         .pipe(sass({'include css': true}))
         .on('error', function(err){
             console.error(err); this.emit('end');
             notify({title:'Gulp: styles', message: err, icon: path.join(__dirname, 'stylus.png')});
         })
         .pipe(postcss([ autoprefixer({ browsers: config.autoprefixer }) ]))
-        .pipe(!isWatching ? gutil.noop() : sourcemaps.init({ loadMaps: true }))
+        .pipe(sourcemaps.write())
         //.pipe(isWatching ? gutil.noop() : uncss({
           //  html: [rootPath + config.destDir + '**/*.html']
 //        }))
@@ -178,6 +214,10 @@ gulp.task('default', function() {
     gulp.start('scripts');
     gulp.start('styles');
 
+    CFonts.say('Wow.', fontConf);
+    CFonts.say('Very watching.', fontConf);
+    CFonts.say('Much compilation.', fontConf);
+
     // Run the server
     gulp.start('serve');
 
@@ -192,6 +232,11 @@ gulp.task('build', function() {
     isWatching = false;
     //gulp.start('clean');
     gulp.start('scripts');
+    gulp.start('jsLibs');
     gulp.start('styles');
     gulp.start('copy');
+
+    CFonts.say('Wow.', fontConfBuild);
+    CFonts.say('Very building.', fontConfBuild);
+    CFonts.say('Much compilation.', fontConfBuild);
 });

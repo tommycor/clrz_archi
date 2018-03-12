@@ -1,0 +1,40 @@
+/*
+	This is for base elements or general declarations
+	Page-specific classes should probably go in /pages, unless you have multiple page-specific classes on the body,
+	this is probably the place for them
+*/
+
+* {
+	@include box-sizing(border-box);
+}
+*:before,
+*:after {
+	@include box-sizing(border-box);
+}
+
+
+// Body reset
+html {
+	font-size: 10px;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+body {
+	font-family: $sans-serif;
+	font-size: 16px;
+	line-height: 1;
+	width: 100%;
+	overflow-x: hidden;
+}
+
+.body-wrapper {
+	width: 100vw;
+}
+
+::-moz-selection {
+		background: $grey;
+}
+
+::selection {
+		background: $grey;
+}

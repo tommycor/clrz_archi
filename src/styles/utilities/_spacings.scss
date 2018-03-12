@@ -1,0 +1,54 @@
+// Generate for instance:
+// .t-marg-top-sm
+// .t-marg-top-sm--xl (for wide)
+// .t-marg-top-sm--lg (for desktop)
+// .t-marg-top-sm--md (for tablet)
+// .t-marg-top-sm--sm (for mobile)
+// .t-marg-top-sm--xs (for small mobile)
+@each $i, $spacing in $spacings {
+	.u-marg-#{$i}{ margin: #{$spacing}; }
+	.u-marg-t-#{$i}{ margin-top: #{$spacing}; }
+	.u-marg-r-#{$i}{ margin-right: #{$spacing}; }
+	.u-marg-b-#{$i}{ margin-bottom: #{$spacing}; }
+	.u-marg-l-#{$i}{ margin-left: #{$spacing}; }
+}
+
+@each $key, $bp in $breakpoints {
+    @media ( max-width: #{$bp} ) {
+    	@each $i, $spacing in $spacings {
+    		.u-marg-#{$i}--#{$key}{ margin: #{$spacing}; }
+			.u-marg-t-#{$i}--#{$key}{ margin-top: #{$spacing}; }
+			.u-marg-r-#{$i}--#{$key}{ margin-right: #{$spacing}; }
+			.u-marg-b-#{$i}--#{$key}{ margin-bottom: #{$spacing}; }
+			.u-marg-l-#{$i}--#{$key}{ margin-left: #{$spacing}; }
+    	}
+    }
+}
+
+
+// Generate for instance:
+// .u-pad-t-sm
+// .u-pad-t-sm--xl (for wide)
+// .u-pad-t-sm--lg (for desktop)
+// .u-pad-t-sm--md (for tablet)
+// .u-pad-t-sm--sm (for mobile)
+// .u-pad-t-sm--xs (for small mobile)
+@each $i, $spacing in $spacings {
+	.u-pad-#{$i}{ padding: #{$spacing}; }
+	.u-pad-t-#{$i}{ padding-top: #{$spacing}; }
+	.u-pad-r-#{$i}{ padding-right: #{$spacing}; }
+	.u-pad-b-#{$i}{ padding-bottom: #{$spacing}; }
+	.u-pad-l-#{$i}{ padding-left: #{$spacing}; }
+}
+
+@each $key, $bp in $breakpoints {
+    @media ( max-width: #{$bp} ) {
+    	@each $i, $spacing in $spacings {
+    		.u-pad-#{$i}--#{$key}{ padding: #{$spacing}; }
+			.u-pad-t-#{$i}--#{$key}{ padding-top: #{$spacing}; }
+			.u-pad-r-#{$i}--#{$key}{ padding-right: #{$spacing}; }
+			.u-pad-b-#{$i}--#{$key}{ padding-bottom: #{$spacing}; }
+			.u-pad-l-#{$i}--#{$key}{ padding-left: #{$spacing}; }
+    	}
+    }
+}

@@ -1,0 +1,11 @@
+@mixin pad-ratio($x, $y) {
+    position: relative;
+
+    &:before {
+        content: '';
+        width: 100%;
+        display: block;
+        position: relative;
+        padding-top: percentage($y / $x);
+    }
+}

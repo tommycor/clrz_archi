@@ -1,0 +1,21 @@
+/* 
+	Use this file to style cms-generated content 
+*/
+
+// wysiwyg Wordpress
+
+.alignleft {
+    float: left;
+    margin-right: 1.5em;
+}
+
+.alignright {
+    float: right;
+    margin-left: 1.5em;
+}
+
+.bold {
+	font-weight: $bold;
+}
+
+// here you can have style for ACF, cms pages...

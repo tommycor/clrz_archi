@@ -1,0 +1,44 @@
+.u-box-one-by-one {
+    @include pad-ratio(1, 1);
+}
+
+.u-box-one-by-two {
+	@include pad-ratio(1, 2);
+}
+.u-box-two-by-one {
+	@include pad-ratio(2, 1);
+}
+
+.u-box-three-by-two {
+    @include pad-ratio(3, 2);
+}
+.u-box-two-by-three {
+    @include pad-ratio(2, 3);
+}
+
+.u-box-four-by-three {
+    @include pad-ratio(4, 3);
+
+    &--small {
+    	&:before {
+    		padding-top: calc( 75% - 1px );
+    	}
+    }
+}
+.u-box-three-by-four {
+    @include pad-ratio(3, 4);
+}
+
+.u-box-nine-by-sixteen {
+	@include pad-ratio(9, 16);
+}
+.u-box-sixteen-by-nine {
+	@include pad-ratio(16, 9);
+}
+
+.u-box-four-by-five {
+	@include pad-ratio(5, 4);
+}
+.u-box-five-by-four {
+	@include pad-ratio(4, 5);
+}

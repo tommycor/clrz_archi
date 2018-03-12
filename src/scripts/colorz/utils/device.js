@@ -19,6 +19,8 @@ class Device extends Component {
 		this.isIphone 	= navigator.userAgent.match(/.*(iPhone).*/) ? true : false;
 		this.isAndroid 	= navigator.userAgent.match(/.*(Android).*/) ? true : false;
 		this.isFirefox 	= navigator.userAgent.match(/.*((f|F)irefox).*/) ? true : false;
+		this.isChrome 	= navigator.userAgent.match(/.*(Chrome).*/) ? true : false;
+		this.isSafari 	= navigator.userAgent.match(/.*(Safari).*/) && !this.isChrome ? true : false;
 
 		this.pointer 		= !!window.navigator.pointerEnabled;
 		this.msPointer 		= !!window.navigator.msPointerEnabled;

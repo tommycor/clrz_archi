@@ -1,0 +1,3 @@
+@mixin viewportSizer( $property, $size, $screen ) {
+    #{$property}: 100vw * $size / $screen;
+}

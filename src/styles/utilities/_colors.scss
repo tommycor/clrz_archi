@@ -1,0 +1,27 @@
+@each $i, $color in $colors {
+	.u-#{$i}{ color: #{$color} }
+	.u-bg-#{$i}{ background-color: #{$color} }
+	.u-fill-#{$i}{ fill: #{$color} }
+	.u-stroke-#{$i}{ stroke: #{$color} }
+	.u-border-#{$i}{ border-color: #{$color} }
+}
+
+// @each $i, $color in $colors {
+// 	@include responsive( u-#{$i}, color, #{$color});
+// 	@include responsive( u-bg-#{$i}, background-color, #{$color});
+// 	@include responsive( u-fill-#{$i}, fill, #{$color});
+// 	@include responsive( u-stroke-#{$i}, stroke, #{$color});
+// 	@include responsive( u-border-#{$i}, border-color, #{$color});
+// }
+
+@each $key, $bp in $breakpoints {
+    @media ( max-width: #{$bp} ) {
+    	@each $i, $color in $colors {
+    		.u-#{$i}--#{$key}{ color: #{$color}; }
+			.u-bg-#{$i}--#{$key}{ background-color: #{$color}; }
+			.u-fill-#{$i}--#{$key}{ fill: #{$color}; }
+			.u-stroke-#{$i}--#{$key}{ stroke: #{$color}; }
+			.u-border-#{$i}--#{$key}{ border-color: #{$color}; }
+    	}
+    }
+}

@@ -1,0 +1,56 @@
+label,
+input,
+textarea,
+select,
+button{
+	font-family: $sans-serif;
+}
+
+button{
+	cursor: pointer;
+}
+
+.label,
+.input{
+	display: block;
+	width: 100%;
+	border:0;
+	-webkit-appearance: none;
+}
+
+.label{
+	// style pour les labels
+}
+
+.input{
+	font-size: 15px;
+	border-radius: 0;
+	text-align: left;
+
+	&[type="text"]:valid,
+	&[type="email"]:valid,
+	&.valid{
+		background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23888' d='M24 5.316l-2.734-2.734L7.9 15.95l-5.166-5.165L0 13.52l7.9 7.898 2.733-2.734'/%3E%3C/svg%3E");
+		background-position: right 12px center;
+		background-repeat: no-repeat;
+		background-size: 12px 12px;
+	}
+}
+
+input {
+	border-radius: 0;
+}
+
+select{
+	&.input{
+		border: 1px solid transparent;
+		height: 50px;
+		background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='6' height='13'%3E%3Cpath fill='%23868686' d='M0 3.25L3 0l3 3.25H0zM3 13L0 9.76h6L3 13z'/%3E%3C/svg%3E");
+		background-position: right 10px center;
+		background-repeat: no-repeat;
+
+		
+		&:focus{
+		}
+	}
+}

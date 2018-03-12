@@ -1,7 +1,9 @@
-import Component from '../../Component';
+import Component 	from '../../Component';
+
+import Fader 		from '../../utils/Fader'
 
 module.exports = class Popin extends Component {
-	onInit() {
+	onInit( el, args ) {
 		this.onOpen 			= this.onOpen.bind( this );
 		this.open 				= this.open.bind( this );
 		this.onClose 			= this.onClose.bind( this );
@@ -12,13 +14,19 @@ module.exports = class Popin extends Component {
 		this.el 		= el;
 		this.id 		= this.el.id;
 		this.timeout 	= null;
+		this.openPopin 	= args.open;
+		this.closePopin = args.close;
 
 		this.el.style.display = 'none';
 		this.el.style.opacity = 0;
 
-		this.btnOpen		= document.querySelectorAll('.js-popin-open[data-popin="' + this.id + '"]');
-		this.btnClose 		= this.el.querySelectorAll('.js-popin-close');
-		this.background 	= this.el.querySelector('.js-popin-bg');
+		this.btnOpen	= document.querySelectorAll('.js-popin-open[data-popin="' + this.id + '"]');
+		this.btnClose 	= this.el.querySelectorAll('.js-popin-close');
+		this.background = this.el.querySelector('.js-popin-bg');
+
+		this.fader 		= new Fader({
+			el: this.el,
+		});
 
 		if( this.btnOpen != void 0 && this.btnOpen.length != 0 ) {
 			for( var i = 0 ; i < this.btnOpen.length ; i++ ) {
@@ -33,35 +41,31 @@ module.exports = class Popin extends Component {
 		}
 	}
 
-	onOpen() {
-		PopinManager.openPopin( this );
+	onOpen( event ) {
+		event.preventDefault();
+		this.openPopin( this );
 	}
 
 	open() {
-		this.el.style.display = 'block';
-
-		var that = this;
-
 		clearTimeout( this.timeout );
 
-		requestAnimationFrame( function() {
-			that.el.style.opacity = 1;
-			that.el.addEventListener('click', that.stopPropagation );
-			if( that.background != void 0 ) {
-				that.background.addEventListener('click', that.onClose );
-			}
-			else {
-				window.addEventListener('click', that.onClose );
-			}
-		});
+		this.fader.in();
+
+		this.el.addEventListener('click', this.stopPropagation );
+		if( this.background != void 0 ) {
+			this.background.addEventListener('click', this.onClose );
+		}
+		else {
+			window.addEventListener('click', this.onClose );
+		}
 	}
 
 	onClose() {
-		PopinManager.closePopin();
+		this.closePopin();
 	}
 
 	close() {
-		this.el.style.opacity = 0;
+		this.fader.out();
 
 		this.el.removeEventListener('click', this.stopPropagation );
 
@@ -71,12 +75,6 @@ module.exports = class Popin extends Component {
 		else {
 			window.removeEventListener('click', this.onClose );
 		}
-
-		var that = this;
-
-		this.timeout = setTimeout( function() {
-			that.el.style.display = 'none';
-		}, 700);
 	}
 
 	stopPropagation( event ) {

@@ -1,0 +1,5 @@
+.navigation-musclorz .toggle-nav-musclorz {
+	@include mq($until: tablet) {
+		right: -100px !important;
+	}
+}

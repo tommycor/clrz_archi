@@ -1,0 +1,51 @@
+/* 
+  Everything typography ! font sizes, common texts, links, headings...
+*/
+
+// common heading styles
+
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6{
+  // we could use some tool like modular scale / vertical rythm ...
+  // sassline.com
+  // modularscale.com
+  font-family: $sans-serif;
+  margin-bottom: .6em;
+  margin-top: 0;
+}
+
+h1, .h1 {
+  font-size: 30px;
+}
+
+h2, .h2 {
+  font-size: 24px;
+}
+
+// paragraphes and common definitions
+// helpers class should remain in the helpers file (/utilities/_helpers.scss)
+
+p{
+  margin: 0;
+  line-height: auto;
+  & + p {
+    margin-top: 1em;
+  }
+}
+
+a{
+  color:inherit;
+  &:focus{}
+  &:hover{}
+}
+
+strong{
+  font-weight: 300;
+}
+
+em{}
+blockquote{}

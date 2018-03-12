@@ -1,0 +1,186 @@
+/*
+	For inspiration : http://basscss.com/
+*/
+
+// Position
+.u-relative { position: relative; }
+.u-absolute { position: absolute; }
+
+.u-absolute-center {	
+	top:50%;
+	transform: translateY(-50%);
+}
+
+// Display
+.u-block { display: block; }
+.u-inline { display: inline; }
+.u-flex { display: flex; }
+.u-inline-block { 
+    display: inline-block;
+    vertical-align: middle;
+}
+.u-none { display: none; }
+
+@each $key, $bp in $breakpoints {
+    @media ( max-width: #{$bp} ) {
+        .u-block--#{$key} { display: block; }
+        .u-inline--#{$key} { display: inline; }
+        .u-flex--#{$key} { display: flex; }
+        .u-inline-block--#{$key} { 
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .u-none--#{$key} { display: none; }
+    }
+}
+
+// sizes
+.u-full-width{ width: 100%; }
+.u-full-vp-width{ width: 100vw; }
+.u-half-width { width: 50%; }
+.u-full-height{ height: 100%; }
+.u-full-vp-height{ height: 100vh; }
+.u-half-height { height: 50%; }
+@each $key, $bp in $breakpoints {
+    @media ( max-width: #{$bp} ) {
+        .u-full-width--#{$key}{ width: 100%; }
+        .u-full-vp-width--#{$key}{ width: 100vw; }
+        .u-half-width--#{$key} { width: 50%; }
+        .u-full-height--#{$key} { height: 100%; }
+        .u-full-vp-height--#{$key} { height: 100vh; }
+        .u-half-height--#{$key} { height: 50%; }
+    }
+}
+
+// Z-index utilities
+.u-front    { z-index: 100; }
+.u-middle   { z-index: 10; }
+.u-back     { z-index: 1; }
+.u-behind   { z-index: -1; }
+
+// Grid utilities
+.row.no-gutters {
+	margin-right: 0;
+	margin-left: 0;
+}
+.row.no-gutters > [class^="col-"],
+.row.no-gutters > [class*=" col-"] {
+	padding-right: 0;
+	padding-left: 0;
+}
+
+// Alignment
+.u-left           { text-align: left; }
+.u-right          { text-align: right; }
+.u-center         { text-align: center; }
+.u-justify        { text-align: justify; }
+.u-nowrap         { white-space: nowrap; }
+
+
+@each $key, $bp in $breakpoints {
+    @media ( max-width: #{$bp} ) {
+        .u-left--#{$key}    { text-align: left; }
+        .u-right--#{$key}   { text-align: right; }
+        .u-center--#{$key}  { text-align: center; }
+        .u-justify--#{$key} { text-align: justify; }
+        .u-nowrap--#{$key}  { white-space: nowrap; }
+    }
+}
+
+// Transformation
+.u-lowercase      { text-transform: lowercase; }
+.u-uppercase      { text-transform: uppercase; }
+.u-capitalize     { text-transform: capitalize; }
+
+.u-bold    { font-weight: $bold; }
+.u-light   { font-weight: $light; }
+.u-italic   { font-style: italic; }
+
+.u-overflow-hidden { overflow: hidden; }
+
+.u-reset-font-size {
+    font-size: 0;
+    letter-spacing: normal;
+}
+
+.u-cover{
+	background-size: cover;
+	background-position: 50% 50%;
+}
+
+.u-wrapper-inline-block {
+    font-size: 0;
+    position: relative;
+    height: 100%;
+    letter-spacing: normal;
+}
+
+.u-wrapper-panel {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.u-wrapper-vertical-align {
+    &:after {
+        content: '';
+        display: inline-block;
+        vertical-align: middle;
+        width: 0;
+        height: 100%;
+        position: relative;
+    }
+}
+
+.u-vertical-align-inline-block {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+
+    &--top {
+        vertical-align: top;
+    }
+
+    &--bottom {
+        vertical-align: bottom;
+    }
+}
+
+
+.u-no-float 	{ float: none; }
+.u-float-right 	{ float: right; }
+.u-float-left 	{ float: left; }
+
+.u-relative 	{ position: relative; }
+.u-absolute 	{ position: absolute; }
+
+.u-pointer-none 	{ pointer-events: none; }
+.u-pointer-all 	{ pointer-events: all; }
+.u-select-none 	{ user-select: none; }
+.u-cursor-pointer 	{ cursor: pointer; }
+
+
+.u-antialiased{
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+.u-sub-antialiased{
+  -webkit-font-smoothing: subpixel-antialiased;
+  -moz-osx-font-smoothing: auto;
+  text-rendering: auto;
+}
+
+.js-image-cover-wrapper {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    overflow: hidden;
+}
+

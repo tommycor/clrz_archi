@@ -1,9 +1,9 @@
-import Component 			from '../colorz/Component';
+import Component 			from '../Component';
 
-import device 				from '../colorz/utils/device';
-import getData 				from '../colorz/utils/getData';
-import Easing 				from '../colorz/utils/Easing';
-import getAbsoluteOffset 	from '../colorz/utils/getAbsoluteOffset';
+import device 				from './device';
+import getData 				from './getData';
+import Easing 				from './Easing';
+import getAbsoluteOffset 	from './getAbsoluteOffset';
 
 module.exports = class Anchor extends Component {
 	onInit( el ) {

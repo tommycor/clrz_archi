@@ -1,0 +1,83 @@
+.select {
+	background: transparent;
+	color: $black;
+	position: relative;
+	display: inline-block;
+
+    &-item {
+		background-image: none;
+		border: none;
+		border-radius: 0;
+		background-color: transparent;
+	    appearance: none;
+	    padding-right: 35px;
+	    font-size: inherit;
+	    width: 100%;
+	    cursor: pointer;
+    }
+
+	&:before {
+		content: '';
+		position: absolute;
+		top: calc( 100% + 15px );
+		left: 0;
+		width: calc( 100% - 15px );
+		height: 1px;
+		background-color: $black;
+		text-transform: uppercase;
+		transition: transform .25s $ease-in-out-quad;
+		transform: translateY(0) translateZ(0);
+	}
+
+	&:after {
+		position: absolute;
+        content: "\25BC";
+        font-size: 8px;
+        line-height: 1;
+        right: 15px;
+        top: calc( 50%  - 3px);
+        pointer-events: none;
+    }
+
+	&:hover {
+		&:before {
+			transform: translateY(-5px) translateZ(0);
+		}
+	}
+
+	&:focus {
+	    outline: none;
+	}
+
+	&--border:before, &--border-double:before {
+		content: none;
+	}
+
+	&--border {
+		padding: 15px;
+		padding-right: 30px;
+		border: solid 1px $black;
+	}
+
+	&--border-double &-item {
+		padding: 15px;
+		padding-right: 30px;
+		border: solid 2px $black;
+	}
+
+	&--no-border {
+		&:before {
+			content: none;
+		}
+	}
+
+
+	&--empty-arrow {
+		&:after {
+			height: 5px;
+			width: 8px;
+			background-image: url('../../dist/assets/medias/images/picto/empty_arrow.svg');
+			content: '';			
+		}
+	}
+}

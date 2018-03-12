@@ -1,0 +1,83 @@
+.t-text {
+	font-size: 15px;
+	line-height: 20px;
+	font-family: $sans-serif;
+
+	&--big {
+		font-size: 20px;
+		line-height: 24px;
+	}
+
+	&--xbig {
+		font-size: 24px;
+		line-height: 32px;
+	}
+
+	&--small {
+		font-size: 14px;
+		line-height: normal;		
+	}
+
+	&--xsmall {
+		font-size: 11px;
+		line-height: normal;		
+		letter-spacing: 1px;
+	}
+
+	&--serif {
+		font-family: $serif;
+	}
+
+	&--sans-serif {
+		font-family: $sans-serif;
+	}
+}
+
+.t-book {
+    font-weight: $medium;
+}
+.t-light {
+    font-weight: $light;
+}
+.t-heavy {
+    font-weight: $bold;
+}
+
+.t-h1 {
+	font-family: $serif;
+	font-size: 58px;
+	line-height: 51px;
+	letter-spacing: 0;
+	font-weight: $medium;
+
+	@include mq( $until: tablet ) {
+		font-size: 45px;
+		line-height: 45px;
+	}
+}
+
+.t-h2 {
+	font-family: $sans-serif;
+	font-size: 48px;
+	line-height: 48px;
+	letter-spacing: 0;
+	font-weight: $medium;
+}
+
+.t-h3 {
+	font-family: $sans-serif;
+	font-size: 21px;
+	line-height: 32px;
+}
+
+.t-h4 {
+	font-family: $sans-serif;
+	font-size: 35px;
+	line-height: 45px;
+	font-weight: $medium;
+
+	@include mq( $until: tablet ) {
+		font-size: 30px;
+		line-height: 35px;
+	}
+}

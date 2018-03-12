@@ -32,7 +32,7 @@ module.exports = class PopinManager extends Component {
 			}
 
 			if( !isDefined ) {
-				this.popins.push( new Popin ( newPopin, { 'open' :this.openPopin, 'close' : this.closePopin} ) );
+				this.popins.push( new Popin ( newPopin, { open :this.openPopin, close : this.closePopin} ) );
 			}
 		}
 	}
