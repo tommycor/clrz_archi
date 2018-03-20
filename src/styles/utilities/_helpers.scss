@@ -1,14 +1,11 @@
-/*
-	For inspiration : http://basscss.com/
-*/
 
 // Position
 .u-relative { position: relative; }
 .u-absolute { position: absolute; }
 
-.u-absolute-center {	
-	top:50%;
-	transform: translateY(-50%);
+.u-absolute-center {    
+    top:50%;
+    transform: translateY(-50%);
 }
 
 // Display
@@ -19,6 +16,7 @@
     display: inline-block;
     vertical-align: middle;
 }
+
 .u-none { display: none; }
 
 @each $key, $bp in $breakpoints {
@@ -60,13 +58,13 @@
 
 // Grid utilities
 .row.no-gutters {
-	margin-right: 0;
-	margin-left: 0;
+    margin-right: 0;
+    margin-left: 0;
 }
 .row.no-gutters > [class^="col-"],
 .row.no-gutters > [class*=" col-"] {
-	padding-right: 0;
-	padding-left: 0;
+    padding-right: 0;
+    padding-left: 0;
 }
 
 // Alignment
@@ -104,8 +102,8 @@
 }
 
 .u-cover{
-	background-size: cover;
-	background-position: 50% 50%;
+    background-size: cover;
+    background-position: 50% 50%;
 }
 
 .u-wrapper-inline-block {
@@ -149,18 +147,22 @@
     }
 }
 
+.u-wrapper {
+    @extend .u-wrapper-inline-block;
+    @extend .u-wrapper-vertical-align;
+}
 
-.u-no-float 	{ float: none; }
-.u-float-right 	{ float: right; }
-.u-float-left 	{ float: left; }
+.u-no-float     { float: none; }
+.u-float-right  { float: right; }
+.u-float-left   { float: left; }
 
-.u-relative 	{ position: relative; }
-.u-absolute 	{ position: absolute; }
+.u-relative     { position: relative; }
+.u-absolute     { position: absolute; }
 
-.u-pointer-none 	{ pointer-events: none; }
-.u-pointer-all 	{ pointer-events: all; }
-.u-select-none 	{ user-select: none; }
-.u-cursor-pointer 	{ cursor: pointer; }
+.u-pointer-none     { pointer-events: none; }
+.u-pointer-all  { pointer-events: all; }
+.u-select-none  { user-select: none; }
+.u-cursor-pointer   { cursor: pointer; }
 
 
 .u-antialiased{
@@ -183,4 +185,3 @@
     top: 0;
     overflow: hidden;
 }
-

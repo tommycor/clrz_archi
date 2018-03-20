@@ -1,9 +1,13 @@
-import $ 		from "jquery";
+import creator 			from './colorz/utils/creator';
 
-import creator 	from './colorz/utils/creator';
+import VideoPlayer 		from './colorz/core/VideoPlayer';
+import YoutubePlayer 	from './colorz/core/YoutubePlayer/YoutubePlayer';
 
-import Form 	from './components/Form';
+import ImageCoverWrapper 		from './colorz/core/ImageCover/ImageCoverWrapper';
 
 
 
-var forms = creator( '.js-form', Form );
+var videoPlayers 	= creator( '.js-video-player', VideoPlayer );
+var youtubePlayers 	= creator( '.js-youtube-player', YoutubePlayer );
+
+var imagecovers 	= creator( '.js-image-cover-wrapper', ImageCoverWrapper );
