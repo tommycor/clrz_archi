@@ -1,0 +1,60 @@
+/*
+  Keyframes and stuff
+  https://github.com/daneden/animate.css/
+  http://bouncejs.com/
+*/
+
+.u-animated {
+  animation-duration: .4s;
+  animation-fill-mode: both;
+}
+
+.u-animated.infinite {
+  animation-iteration-count: infinite;
+}
+
+// this is for animating multiple elements with a delay
+// specify the number of items (don't go crazy) and the delay (s)
+// example : 
+// div.animated.animated-stagger.fadeIn
+
+.u-animated-stagger{
+  $items  : 4 ;
+  $delay  : .1 ;
+  // loop adding animation-delay
+  @for $i from 1 to $items {
+    &:nth-of-type(#{$i+1}){
+      animation-delay: $delay * $i * 1s ;
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.u-fadeIn {
+  animation-name: fadeIn;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 100%, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.u-fadeInUp {
+  animation-name: fadeInUp;
+}

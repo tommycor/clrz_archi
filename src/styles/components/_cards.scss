@@ -1,0 +1,22 @@
+/*
+	This is what a component will probably look like
+	Indentation is used instead of nesting, for clarity and to avoid unnecessary specificity
+	A component can have specific styles instead of using helper classes, 
+	as long as it is documented in the styleguide :)
+	.card > .card__header.has-overlay + .card__title + .card__content
+
+	https://codepen.io/victorjeman/pen/qNNzQY
+	https://github.com/jgthms/bulma/blob/master/sass/components/card.sass
+	https://foundation.zurb.com/sites/docs/card.html
+*/
+
+.card{}
+
+	.card__header{}
+
+	.card__title{}
+
+	.card__content{}
+
+// modifiers
+// .card--whatever ...

@@ -2,6 +2,14 @@
   Everything typography ! font sizes, common texts, links, headings...
 */
 
+// put this class on the body if needed
+
+.antialiased{
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
 // common heading styles
 
 h1, .h1,
@@ -31,7 +39,7 @@ h2, .h2 {
 
 p{
   margin: 0;
-  line-height: auto;
+  line-height: 1.4;
   & + p {
     margin-top: 1em;
   }
@@ -43,8 +51,28 @@ a{
   &:hover{}
 }
 
+// .link class for global link style
+
+.link{
+  position: relative;
+  &:after{
+    content: '';
+    position: absolute;
+    bottom: -0.25em;
+    left:0;
+    width: 100%;
+    border-bottom: 1px solid;
+    transform: scaleX(0);
+    opacity: .5;
+    transition: transform .15s $ease-out-quint;
+  }
+  &:hover:after{
+    transform: none;
+  }
+}
+
 strong{
-  font-weight: 300;
+  font-weight: $bold;
 }
 
 em{}

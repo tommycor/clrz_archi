@@ -1,49 +1,57 @@
 @charset 'utf-8';
 
-/* 
+/*
 	good reads about conventions, architecture, naming... Please add to the list
 	This will probably be replaced by a RTFM link when the page exists :D
-	
+
 	http://davidtheclark.com/scss-lint-styleguide/
 	https://sass-guidelin.es/
 	http://basscss.com/
 	https://github.com/moklick/frontend-stuff
 */
 
-@import 'settings/variables';
-@import 'vendor/bootstrap';
-@import 'vendor/flatpickr.min';
+@import 'settings/variables',
+		'vendor/bootstrap';
 
 // Settings
 @import 'settings/normalize',
 		'settings/reset',
 		'settings/easings',
 		'settings/mixins',
-		'settings/fonts',
-		'settings/typography',
-		'settings/input',
-		'settings/checkbox',
-		'settings/icons',
-		'settings/popins',
-		'settings/buttons',
-		'settings/select';
+		'settings/fonts';
 
 // Utilities
 @import 'utilities/helpers',
 		'utilities/spacings',
+		'utilities/animations',
 		'utilities/colors',
 		'utilities/boxes';
 
 // Base
 @import 'base/base',
-		'base/fonts',
+		'base/typography',
 		'base/cms',
+		'base/lists',
 		'base/forms';
 
+// Theme
+@import 'theme/animations';
+
 // Components
-// @import'components/array-address';
+@import 'components/button',
+		'components/breadcrumb',
+		'components/checkboxes-radios',
+		'components/icons',
+		'components/media',
+		'components/cards';
+
+// Layouts
+@import 'layout/common',
+		'layout/footer',
+		'layout/header',
+		'layout/nav';
 
 // Pages
-// @import 'pages/account';
+@import 'pages/home';
 
 @import 'shame';

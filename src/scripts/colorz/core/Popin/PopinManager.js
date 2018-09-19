@@ -1,6 +1,6 @@
 import Component 	from '../../Component';
 import Popin 		from './Popin';
-import emitter 		from '../../utils/emitter';
+import emitter 		from '../../utils/Emitter';
 
 module.exports = class PopinManager extends Component {
 	onInit() {

@@ -8,6 +8,19 @@ Prérequis :
  - Bases en programmation orienté objet
  - Bases en ES6
 
+# Configuration
+Logiciels nécessaires:
+ - NodeJS 6.*
+ - gulpJS
+
+Installation du projet:
+ - npm install
+ - changer la config dans gulpfile.js
+
+Compilation:
+ - ```npm start``` lance browsersync et watch le JS et SCSS
+ - ```gulp build``` compile le JS et le SCSS en avec minify et uglify, concatène et minify les libs
+
 # Utilisation
 L’utilisation de l’architecture se compose de 3 parties principales : **les components**, **les utils** et **le core**. Chacune de ces parties va jouer un rôle spécifique afin de permettre de créer un environnement logique modulaire et évolutif.
 

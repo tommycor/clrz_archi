@@ -1,8 +1,16 @@
-@font-face {
-    font-family: 'silk';
-    src: url('./assets/fonts/silk.woff2') format('woff2'),
-         url('./assets/fonts/silk.woff') format('woff'),
-         url('./assets/fonts/silk.ttf') format('ttf');
-    font-weight: 400;
-    font-style: normal;
-}
+/* 
+	Import fonts and font weights here
+	Use base/typography for styling :)
+*/
+
+// regular
+// @font-face {
+//     font-family: 'Merriweather';
+//     src: url('../fonts/merriweather-regular.woff2') format('woff2'),
+//          url('../fonts/merriweather-regular.woff') format('woff');
+//     font-weight: 400;
+//     font-style: normal;
+// }
+
+// google font example
+// @import url('https://fonts.googleapis.com/css?family=Roboto+Condensed');

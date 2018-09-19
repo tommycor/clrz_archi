@@ -1,27 +1,22 @@
-$grid-gutter-width: 2px;
-$grid-columns: 8;
+$grid-gutter-width: 30px;
+$grid-columns: 12;
 
 $bp-mobile: 480px;
 $bp-tablet: 767px;
-$bp-desktop: 1034px;
-$bp-wide: 1360px;
-
-$container-sm: (738px);
-$container-md: (1014px);
-$container-lg: (1300px);
+$bp-desktop: 1080px;
+$bp-wide: 1370px;
 
 // https://github.com/sass-mq/sass-mq
+// example use :
+//	 	@include mq($from: mobile, $until: tablet) {
+//        background: red;
+//      }
 $mq-breakpoints: (
     mobile:  $bp-mobile,
     tablet:  $bp-tablet,
     desktop: $bp-desktop,
     wide:    $bp-wide
 );
-// example use :
-//	 	@include mq($from: mobile, $until: tablet) {
-//        background: red;
-//      }
-
 
 $breakpoints: (
     lg:    	$bp-wide,
@@ -30,32 +25,35 @@ $breakpoints: (
     xs:  	$bp-mobile,
 );
 
-
-
-// $mobile: ($bp-mobile - 1);
-// $tablet: ($bp-tablet + 1);
-// $desktop: ($bp-desktop + 1);
-// $min-desktop: ($tablet - 1);
-
-// $container-sm: (738px);
-// $container-md: (1020px);
-// $container-lg: (1320px);
-
-
-
 // Bootstrap
+// $screen-xs: ;
 $screen-sm: $bp-tablet;
 $screen-md: $bp-desktop;
 $screen-lg: $bp-wide;
 
 // fonts
-$sans-serif: "futura-pt", sans-serif;
-$serif: "silk", "Times New Roman", Times, serif;
+$sans-serif: "proxima-nova", Helvetica, Arial, sans-serif;
+$serif: "minion-pro", "Times New Roman", Times, serif;
 
 $bold: 700;
 $medium: 400;
 $light: 300;
 
+// spaces
+$spacing-xl: 80px;
+$spacing-lg: 50px;
+$spacing-md: 30px;
+$spacing-sm: 20px;
+$spacing-xs: 15px;
+$spacing-0: 	0;
+$spacings: (
+	"xl": $spacing-xl,
+	"lg": $spacing-lg,
+	"md": $spacing-md,
+	"sm": $spacing-sm,
+	"xs": $spacing-xs,
+	"0":  $spacing-0
+);
 
 $black: #111111;
 $white: #ffffff;
@@ -64,7 +62,6 @@ $grey: #efefef;
 $grey-light: #f7f7f7;
 $black-50: #888888;
 $red: #c0392b;
-$red-50: #f9efed;
 $colors: ( 
 	"black": 		$black,
 	"white": 		$white,
@@ -73,26 +70,4 @@ $colors: (
 	"grey-light": 	$grey-light,
 	"black-50": 	$black-50,
 	"red": 			$red,
-	"red-50": 		$red-50,
 );
-
-// spaces
-$spacing-xl: 	120px;
-$spacing-lg: 	80px;
-$spacing-md: 	50px;
-$spacing-sm: 	30px;
-$spacing-xs: 	15px;
-$spacing-xxs: 	5px;
-$spacing-caca: 	5px;
-$spacing-0: 	0;
-$spacings: (
-	"xl": $spacing-xl,
-	"lg": $spacing-lg,
-	"md": $spacing-md,
-	"sm": $spacing-sm,
-	"xs": $spacing-xs,
-	"xxs": $spacing-xxs,
-	"0":  $spacing-0,
-	"caca":  $spacing-0
-)
-

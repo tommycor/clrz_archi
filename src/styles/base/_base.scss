@@ -5,36 +5,30 @@
 */
 
 * {
-	@include box-sizing(border-box);
+  @include box-sizing(border-box);
 }
 *:before,
 *:after {
-	@include box-sizing(border-box);
+  @include box-sizing(border-box);
 }
 
 
 // Body reset
 html {
-	font-size: 10px;
-	-webkit-tap-highlight-color: rgba(0,0,0,0);
+  font-size: 10px;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
 body {
-	font-family: $sans-serif;
-	font-size: 16px;
-	line-height: 1;
-	width: 100%;
-	overflow-x: hidden;
-}
-
-.body-wrapper {
-	width: 100vw;
+  font-family: $serif;
+  font-size: 16px;
+  line-height: 1;
 }
 
 ::-moz-selection {
-		background: $grey;
+    background: rgba($grey, .1);
 }
 
 ::selection {
-		background: $grey;
+    background: rgba($grey, .1);
 }

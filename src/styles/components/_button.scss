@@ -1,0 +1,50 @@
+
+%btn{
+  font-family: $sans-serif;
+  padding: 1em 2.8em;
+  transition: all .15s $ease-in-out-cubic;
+  appearance:none;
+}
+
+.button {
+  @extend %btn;
+
+  &:hover,
+  &:active{
+    // can be used as a base for common hover definitions
+  }
+
+  &:focus{
+    outline: none;
+  }
+
+  &--primary {
+    // use: .button.button--primary
+    &:hover {
+
+    }
+  }
+
+  &--secondary {
+
+    &:hover {
+
+    }
+  }
+
+  // &--ghost
+  // &--pill...
+}
+
+.has-icon{
+  span{
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .icon{
+    vertical-align: middle;
+    position: relative;
+    z-index: 1;
+    margin-right: .5em;
+  }
+}

@@ -1,11 +1,19 @@
 @mixin pad-ratio($x, $y) {
     position: relative;
+    overflow: hidden;
 
     &:before {
         content: '';
-        width: 100%;
         display: block;
-        position: relative;
         padding-top: percentage($y / $x);
+    }
+
+    > a > picture,
+    > a > img,
+    > picture,
+    > img {
+        position: absolute;
+        top: 0;
+        left: 0;
     }
 }

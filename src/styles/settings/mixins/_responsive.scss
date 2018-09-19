@@ -1,9 +1,0 @@
-@mixin responsive( $class, $property, $value ) {
-    @each $key, $bp in $breakpoints {
-        @media ( max-width: #{$bp} ) {
-            .#{$class}--#{$key} {
-                #{$property}: #{$value};
-            }
-        }
-    }
-}

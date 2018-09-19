@@ -1,44 +1,82 @@
-.u-box-one-by-one {
+.u-box-1by1 {
     @include pad-ratio(1, 1);
 }
 
-.u-box-one-by-two {
-	@include pad-ratio(1, 2);
+.u-box-1by2 {
+    @include pad-ratio(1, 2);
 }
-.u-box-two-by-one {
-	@include pad-ratio(2, 1);
+.u-box-2by1 {
+    @include pad-ratio(2, 1);
 }
 
-.u-box-three-by-two {
+.u-box-3by2 {
     @include pad-ratio(3, 2);
 }
-.u-box-two-by-three {
+.u-box-2by3 {
     @include pad-ratio(2, 3);
 }
 
-.u-box-four-by-three {
+.u-box-4by3 {
     @include pad-ratio(4, 3);
-
-    &--small {
-    	&:before {
-    		padding-top: calc( 75% - 1px );
-    	}
-    }
 }
-.u-box-three-by-four {
+.u-box-3by4 {
     @include pad-ratio(3, 4);
 }
 
-.u-box-nine-by-sixteen {
-	@include pad-ratio(9, 16);
+.u-box-9by16 {
+    @include pad-ratio(9, 16);
 }
-.u-box-sixteen-by-nine {
-	@include pad-ratio(16, 9);
+.u-box-16by9 {
+    @include pad-ratio(16, 9);
 }
 
-.u-box-four-by-five {
-	@include pad-ratio(5, 4);
+.u-box-4by5 {
+    @include pad-ratio(5, 4);
 }
-.u-box-five-by-four {
-	@include pad-ratio(4, 5);
+.u-box-5by4 {
+    @include pad-ratio(4, 5);
+}
+
+
+@each $key, $bp in $breakpoints {
+    @media ( max-width: #{$bp} ) {
+        .u-box-1by1--#{$key} {
+            @include pad-ratio(1, 1);
+        }
+
+        .u-box-1by2--#{$key} {
+            @include pad-ratio(1, 2);
+        }
+        .u-box-2by1--#{$key} {
+            @include pad-ratio(2, 1);
+        }
+
+        .u-box-3by2--#{$key} {
+            @include pad-ratio(3, 2);
+        }
+        .u-box-2by3--#{$key} {
+            @include pad-ratio(2, 3);
+        }
+
+        .u-box-4by3--#{$key} {
+            @include pad-ratio(4, 3);
+        }
+        .u-box-3by4--#{$key} {
+            @include pad-ratio(3, 4);
+        }
+
+        .u-box-9by16--#{$key} {
+            @include pad-ratio(9, 16);
+        }
+        .u-box-16by9--#{$key} {
+            @include pad-ratio(16, 9);
+        }
+
+        .u-box-4by5--#{$key} {
+            @include pad-ratio(5, 4);
+        }
+        .u-box-5by4--#{$key} {
+            @include pad-ratio(4, 5);
+        }
+    }
 }

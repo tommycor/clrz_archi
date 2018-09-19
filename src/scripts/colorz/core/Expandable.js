@@ -21,7 +21,13 @@ module.exports = class Expandable extends Component {
 	}
 
 	onReady() {
-		this.el.addEventListener( device.pointerdown, this.onPointerdown );
+        if( this.btn !== void 0 ) {
+            this.btn.addEventListener( device.pointerdown, this.onPointerdown );
+        }
+        else {
+            this.el.addEventListener( device.pointerdown, this.onPointerdown );
+        }
+
 		this.style = window.getComputedStyle( this.wrapper );
 
 		if( this.style.display !== 'none' ) {

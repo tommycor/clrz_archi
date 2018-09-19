@@ -1,0 +1,72 @@
+/**************************
+    Media Object
+***************************/
+// http://www.stubbornella.org/content/2010/06/25/the-media-object-saves-hundreds-of-lines-of-code/
+
+.media {margin:10px;}
+.media, .bd {overflow:hidden; _overflow:visible; zoom:1;}
+.media .img {float:left; margin-right: 10px;}
+.media .img img{display:block;}
+.media .imgExt{float:right; margin-left: 10px;}
+
+// additionnal styles, not related to layout
+.media {
+
+    .img.round{ 
+        border-radius: 50%;
+        overflow: hidden;
+    }
+}
+
+
+/**************************
+    Flag Object
+***************************/
+// https://csswizardry.com/2013/05/the-flag-object/
+
+.flag {
+    display: table;
+    width: 100%;
+}
+
+.flag--rev {
+    direction: rtl;
+    .flag__body {
+        // fix 
+        direction: ltr;
+    }
+}
+
+    .flag__image,
+    .flag__body {
+        display: table-cell;
+        vertical-align: middle;
+
+        .flag--top & {
+            vertical-align: top;
+        }
+
+        .flag--bottom & {
+            vertical-align: bottom;
+        }
+
+    }
+
+    .flag__image {
+        padding-right: 10px;
+
+        > img {
+            display: block;
+            max-width: none;
+        }
+
+        .flag--rev & {
+            padding-right: 0;
+            padding-left: 10px;
+        }
+
+    }
+
+    .flag__body {
+        width: 100%;
+    }

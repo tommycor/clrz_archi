@@ -9,6 +9,7 @@
 
 class Stylizer {
 	transform( el, value ) {
+		 el.style.transform = value;
 		el.style.webkitTransform = value;
 		el.style.MozTransform = value;
 		el.style.msTransform = value;
@@ -16,6 +17,7 @@ class Stylizer {
 	}
 
 	transformOrigin( el, value ) {
+		 el.style.transformOrigin = value;
 		el.style.webkitTransformOrigin = value;
 		el.style.mozTransformOrigin = value;
 		el.style.msTransformOrigin = value;

@@ -39,7 +39,7 @@ module.exports = class Slide extends Component {
 			return;
 		}
 
-		this.easing = new Easing( {
+		this.easing = new Easing({
 			type: this.ease,
 			duration: this.duration,
 			start: 0,
@@ -61,6 +61,7 @@ module.exports = class Slide extends Component {
 
 		this.resetEasing();
 		this.getHeight();
+		this.el.style.overflowY = 'hidden';
 
 		this.easing = new Easing( {
 			type: this.ease,
@@ -111,7 +112,7 @@ module.exports = class Slide extends Component {
 
 	resetEasing() {
 		if( this.easing !== null ) {
-			this.easing.onDestroy();
+			this.easing.callback();
 			this.easing = null;
 		}
 	}

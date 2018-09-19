@@ -1,0 +1,13 @@
+.breadcrumb {
+  &__item {
+    display: inline-block;
+
+    a {
+      // color: rgba($black, .8);
+    }
+
+    &:after{
+      content: '›';
+    }
+  }
+}

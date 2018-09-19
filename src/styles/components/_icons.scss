@@ -1,0 +1,58 @@
+/* ==========================================
+Single-colored icons can be modified like so:
+.icon-name {
+  font-size: 32px;
+  color: red;
+}
+Typically you'll want to do something like this : 
+svg.icon.white.icon--xl > use
+========================================== */
+
+%iconbase{
+  display: inline-block;
+  vertical-align: baseline;
+  stroke-width: 0;
+  width: 1em;
+  height: 1em;
+  transition: all .3s ease;
+}
+
+.icon {
+  @extend %iconbase;
+
+  // sizes
+  &.icon--xs{
+      width: 8px;
+      height: 8px;
+  }
+  
+  &.icon--sm{
+      width: 12px;
+      height: 12px;
+  }
+  
+  &.icon--md{
+      width: 16px;
+      height: 16px;
+  }
+  
+  &.icon--lg{
+      width: 25px;
+      height: 25px;
+  }
+  
+  &.icon--xl{
+      width: 32px;
+      height: 32px;
+  }
+
+  &:not(.icon--multicolor){
+    stroke: currentColor;
+    fill: currentColor;
+    svg path,
+    svg rect,
+    svg circle,{
+        fill: inherit;
+    }
+  }
+}
