@@ -1,15 +1,18 @@
 import Component 	from '../../Component';
-import Popin 		from './Popin';
-import emitter 		from '../../utils/Emitter';
 
-module.exports = class PopinManager extends Component {
+import Popin 		from './Popin';
+
+import emitter 		from '../../utils/Emitter';
+import FixScroll 	from '../../utils/FixScroll'
+
+class PopinManager extends Component {
 	onInit() {
 		this.refresh 		= this.refresh.bind( this );
 		this.getPopinById 	= this.getPopinById.bind( this );
 		this.bindEsc		= this.bindEsc.bind( this );
 		this.closePopin		= this.closePopin.bind( this );
 		this.openPopin		= this.openPopin.bind( this );
-		this.popins 		= [];
+		this.popins 		= new Array();
 		this.currentPopin 	= null;
 	}
 
@@ -24,6 +27,8 @@ module.exports = class PopinManager extends Component {
 
 			for( var j = 0 ; j < this.popins.length ; j++ ) {
 				var oldPopin = this.popins[j];
+
+				this.popins[j].isAttached();
 
 				if( newPopin.id == oldPopin.id ) {
 					isDefined = true;
@@ -45,6 +50,7 @@ module.exports = class PopinManager extends Component {
 
 		this.currentPopin = popin;
 
+		FixScroll.fix();
 		emitter.emit( 'popin:open', this.currentPopin.id );
 		this.currentPopin.open();
 		document.addEventListener('keyup', this.bindEsc);
@@ -56,6 +62,7 @@ module.exports = class PopinManager extends Component {
 			emitter.emit( 'popin:close', this.currentPopin.id );
 		}
 
+		FixScroll.unFix();
 		this.currentPopin = null;
 		document.removeEventListener('keyup', this.bindEsc);
 	}
@@ -89,3 +96,5 @@ module.exports = class PopinManager extends Component {
 		return null;
 	}
 };
+
+export default new PopinManager();

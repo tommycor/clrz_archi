@@ -23,6 +23,8 @@ module.exports = class Component {
 		this.idResize 		= null;
 		this.idScroll 		= null;
 		this.idUpdate 		= null;
+		
+		this._onInit( el, args );
 
 		this.idReady    = onReady.register( this._onReady ) - 1;
 		this.idLoad     = onLoad.register( this._onLoad ) - 1;
@@ -32,8 +34,6 @@ module.exports = class Component {
 		if( this.onUpdate != void 0 ) {
 			this.idUpdate = onUpdate.register( this._onUpdate ) - 1;
 		}
-
-		this._onInit( el, args );
 	}
 
 	_onInit( el, args ) {

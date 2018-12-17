@@ -28,17 +28,7 @@ module.exports = class Popin extends Component {
 			el: this.el,
 		});
 
-		if( this.btnOpen != void 0 && this.btnOpen.length != 0 ) {
-			for( var i = 0 ; i < this.btnOpen.length ; i++ ) {
-				this.btnOpen[i].addEventListener('click', this.onOpen );
-			}
-		}
-
-		if( this.btnClose != void 0 && this.btnClose.length != 0 ) {
-			for( var i = 0 ; i < this.btnClose.length ; i++ ) {
-				this.btnClose[i].addEventListener('click', this.onClose );
-			}
-		}
+		this.isAttached();
 	}
 
 	onOpen( event ) {
@@ -52,12 +42,17 @@ module.exports = class Popin extends Component {
 		this.fader.in();
 
 		this.el.addEventListener('click', this.stopPropagation );
+
 		if( this.background != void 0 ) {
 			this.background.addEventListener('click', this.onClose );
 		}
-		else {
+		else if(this.btnClose == void 0){
 			window.addEventListener('click', this.onClose );
 		}
+
+		setTimeout( () =>{
+            this.el.classList.add('is-active');
+        }, 100);
 	}
 
 	onClose() {
@@ -75,11 +70,12 @@ module.exports = class Popin extends Component {
 		else {
 			window.removeEventListener('click', this.onClose );
 		}
-	}
+        this.el.classList.remove('is-active');
+    }
 
 	stopPropagation( event ) {
 		event.stopPropagation();
-		return;		
+		return;
 	}
 
 	remove() {
@@ -97,4 +93,24 @@ module.exports = class Popin extends Component {
 			}
 		}
 	}
+
+
+	isAttached() {
+		this.btnOpen 	= document.querySelectorAll('.js-popin-open[data-popin="' + this.id + '"]');
+		this.btnClose 	= this.el.querySelectorAll('.js-popin-close');
+		this.background = this.el.querySelector('.js-popin-bg');
+
+		if (this.btnOpen != void 0 && this.btnOpen.length != 0) {
+			for (var i = 0; i < this.btnOpen.length; i++) {
+				this.btnOpen[i].addEventListener('click', this.onOpen);
+			}
+		}
+
+		if (this.btnClose != void 0 && this.btnClose.length != 0) {
+			for (var i = 0; i < this.btnClose.length; i++) {
+				this.btnClose[i].addEventListener('click', this.onClose);
+			}
+		}
+	}
+
 }
