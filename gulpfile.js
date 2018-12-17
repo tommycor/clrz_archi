@@ -22,11 +22,14 @@ var watchify     = require('watchify');
 var stringify    = require('stringify');
 var CFonts       = require('cfonts');
 var concat       = require('gulp-concat');
+var runSequence  = require('run-sequence');
+
+var projectTheme = '[[projectTheme]]';
 
 var config  = {
 
 
-    proxy: 'http://localhost:8080',
+    proxy: 'http://localhost:8081',
 
     sourceDir: './src/',
     destDir:   './static/',
@@ -38,10 +41,9 @@ var config  = {
 
     scriptDir:  'scripts/',
     scriptEntryPoint: 'initialize.js',
-    scriptOutput: 'bundle.js'
+    scriptOutput: 'bundle.js',
+    libsDir: 'libs/'
 }
-
-
 
 var fontConf = {
     font:           'block',
@@ -67,33 +69,31 @@ var fontConfBuild = {
 
 
 
-var isWatching = true;
+var isWatching = false;
 var rootPath   = __dirname + '/';
+
 
 
 // clean (remove sourcemaps on build)
 // -------------------------
 gulp.task('clean', function (cb) {
-    del([rootPath + config.destDir + '*.map']).then(function(){
-        //cleaned
-    });
+    return del([config.destDir + '/*.map', config.destDir + '/*.js', config.destDir + '/*.css']);
 });
 
-// concat + minify JS ibs
-// -------------------------
 gulp.task('jsLibs', function() {
     return gulp.src( config.sourceDir + config.scriptDir + config.libsDir + '*.js')
     .pipe(concat('libs.js'))
     .pipe(uglify())
-    .pipe(gulp.dest( config.destDir ))
-    .pipe(notify('jsLibs Complete!'));
+    .pipe(gulp.dest( config.destDir));
+   // .pipe(notify('jsLibs Complete!'));
 });
+
 
 
 // copy
 // -------------------------
 gulp.task('copy', function (cb) {
-    gulp.src([
+    return gulp.src([
             rootPath + config.destDir + '/**/*',
             '!' + rootPath + config.destDir + '*.css', //the css that is aat the root,
             '!' + rootPath + config.destDir + config.scriptOutput //the js that is aat the root,
@@ -118,6 +118,7 @@ gulp.task('scripts', function() {
                 //rootPath + configExt.scriptease
             ],
             transform: [
+                [ stringify(['.html', '.glsl']) ],
                 [ babelify ]
             ],
             cache: {},
@@ -134,23 +135,35 @@ gulp.task('scripts', function() {
 
     function bundle(){
         var startBundleTime = Date.now();
-        return bundler.bundle()
-            .on('error', function(err) {
-                console.error(err); this.emit('end');
-                notify({title:'Gulp: scripts', message: err, icon: path.join(__dirname, 'es6.png')});
-            })
-            .pipe(source(config.scriptOutput))
-            .pipe(buffer())
-            .pipe(!isWatching ? gutil.noop() : sourcemaps.init({ loadMaps: true }))
-            .pipe(!isWatching ? gutil.noop() : sourcemaps.write('./'))
-            .pipe(!isWatching ? uglify() : gutil.noop() )
-            .pipe(gulp.dest( !isWatching ? rootPath + config.buildDir : rootPath + config.destDir ))
-            .pipe(!isWatching ? gutil.noop() : browserSync.reload({stream:true})) //tell the browser to reload itself
-            .pipe(notify({title:'Gulp: scripts', message:'success', icon: path.join(__dirname, 'es6.png')}));
+
+        if( isWatching ) {
+            return bundler.bundle()
+                .on('error', function(err) {
+                    console.error(err); this.emit('end');
+                    notify({title:'Gulp: scripts', message: err, icon: path.join(__dirname, 'es6.png')});
+                })
+                .pipe(source(config.scriptOutput))
+                .pipe(buffer())
+                .pipe(sourcemaps.init({ loadMaps: true }))
+                .pipe(sourcemaps.write('./'))
+                .pipe(gulp.dest( rootPath + config.destDir ))
+                .pipe(browserSync.reload({stream:true}))
+                .pipe(notify({title:'Gulp: scripts', message:'success', icon: path.join(__dirname, 'es6.png')}));
+        }
+        else {
+            return bundler.bundle()
+                .on('error', function(err) {
+                    console.error(err); this.emit('end');
+                    process.exit(1);
+                })
+                .pipe(source(config.scriptOutput))
+                .pipe(buffer())
+                .pipe(uglify())
+                .pipe(gulp.dest(rootPath + config.buildDir))
+        }
     }
 
-    bundle();
-
+    return bundle();
 });
 
 
@@ -158,23 +171,32 @@ gulp.task('scripts', function() {
 // -------------------------
 
 gulp.task('styles', function() {
-    gulp.src([ rootPath + config.sourceDir + config.stylesDir + '**/' + config.stylesEntryPoint ])
-        .pipe(!isWatching ? gutil.noop() : sourcemaps.init({ loadMaps: true }))
-        .pipe(sass({'include css': true}))
-        .on('error', function(err){
-            console.error(err); this.emit('end');
-            notify({title:'Gulp: styles', message: err, icon: path.join(__dirname, 'stylus.png')});
-        })
-        .pipe(postcss([ autoprefixer({ browsers: config.autoprefixer }) ]))
-        .pipe(sourcemaps.write())
-        //.pipe(isWatching ? gutil.noop() : uncss({
-          //  html: [rootPath + config.destDir + '**/*.html']
-//        }))
-        .pipe(isWatching ? gutil.noop() : minifyCSS({ advanced: false }))
-        .pipe(!isWatching ? gutil.noop() : sourcemaps.write('./'))
-        .pipe(gulp.dest( !isWatching ? rootPath + config.buildDir : rootPath + config.destDir ))
-        .pipe(browserSync.stream({match: '**/*.css'})) // live css injection to avoid browser reload
-        .pipe(notify({title:'Gulp: styles', message:'success', icon: path.join(__dirname, 'stylus.png')}));
+    if( isWatching ) {
+        return gulp.src([ rootPath + config.sourceDir + config.stylesDir + '**/' + config.stylesEntryPoint ])
+            .pipe(sourcemaps.init({ loadMaps: true }))
+            .pipe(sass({'include css': true}))
+            .on('error', function(err){
+                console.error(err); this.emit('end');
+                notify({title:'Gulp: styles', message: err, icon: path.join(__dirname, 'stylus.png')});
+            })
+            .pipe(postcss([ autoprefixer({ browsers: config.autoprefixer }) ]))
+            .pipe(sourcemaps.write())
+            .pipe(sourcemaps.write('./'))
+            .pipe(gulp.dest( rootPath + config.destDir ))
+            .pipe(browserSync.stream({match: '**/*.css'}))
+            .pipe(notify({title:'Gulp: styles', message:'success', icon: path.join(__dirname, 'stylus.png')}));
+    }
+    else {
+        return gulp.src([ rootPath + config.sourceDir + config.stylesDir + '**/' + config.stylesEntryPoint ])
+            .pipe(sass({'include css': true}))
+            .on('error', function(err){
+                console.error(err); this.emit('end');
+                process.exit(1);
+            })
+            .pipe(postcss([ autoprefixer({ browsers: config.autoprefixer }) ]))
+            .pipe(minifyCSS({ advanced: false }))
+            .pipe(gulp.dest(rootPath + config.buildDir ))
+    }
 });
 
 
@@ -230,13 +252,15 @@ gulp.task('default', function() {
 
 gulp.task('build', function() {
     isWatching = false;
-    //gulp.start('clean');
-    gulp.start('scripts');
-    gulp.start('jsLibs');
-    gulp.start('styles');
-    gulp.start('copy');
 
-    CFonts.say('Wow.', fontConfBuild);
-    CFonts.say('Very building.', fontConfBuild);
-    CFonts.say('Much compilation.', fontConfBuild);
+    runSequence('clean', ['scripts', 'jsLibs', 'styles', 'copy'], function(){
+        gulp.start('scripts');
+        gulp.start('jsLibs');
+        gulp.start('styles');
+        gulp.start('copy');
+
+        CFonts.say('Wow.', fontConfBuild);
+        CFonts.say('Very building.', fontConfBuild);
+        CFonts.say('Much compilation.', fontConfBuild);
+    })
 });
